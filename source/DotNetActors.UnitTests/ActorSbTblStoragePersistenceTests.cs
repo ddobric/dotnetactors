@@ -107,9 +107,9 @@ namespace UnitTestsProject
             TableStoragePersistenceProvider prov = new TableStoragePersistenceProvider();
             prov.InitializeAsync(instanceName, new Dictionary<string, object>() { { "StorageConnectionString", storageConnStr } }, purgeOnStart: false).Wait();
 
-            var cfg = SbAkkaTest.GetLocaSysConfig();
+            var cfg = DotNetActorsTests.GetLocaSysConfig();
             ActorSystem sysLocal = new ActorSystem($"{nameof(TblStatePersistenceTest)}/local", cfg);
-            ActorSystem sysRemote = new ActorSystem($"{nameof(TblStatePersistenceTest)}/remote", SbAkkaTest.GetRemoteSysConfig(), persistenceProvider: prov);
+            ActorSystem sysRemote = new ActorSystem($"{nameof(TblStatePersistenceTest)}/remote", DotNetActorsTests.GetRemoteSysConfig(), persistenceProvider: prov);
 
             CancellationTokenSource src = new CancellationTokenSource();
 
@@ -140,9 +140,9 @@ namespace UnitTestsProject
             TableStoragePersistenceProvider prov = new TableStoragePersistenceProvider();
             prov.InitializeAsync(instanceName, new Dictionary<string, object>() { { "StorageConnectionString", storageConnStr } }, purgeOnStart: false).Wait();
 
-            var cfg = SbAkkaTest.GetLocaSysConfig();
+            var cfg = DotNetActorsTests.GetLocaSysConfig();
             ActorSystem sysLocal = new ActorSystem($"{nameof(TblStatePersistenceTest)}/local", cfg);
-            ActorSystem sysRemote = new ActorSystem($"{nameof(TblStatePersistenceTest)}/remote", SbAkkaTest.GetRemoteSysConfig(), persistenceProvider: prov);
+            ActorSystem sysRemote = new ActorSystem($"{nameof(TblStatePersistenceTest)}/remote", DotNetActorsTests.GetRemoteSysConfig(), persistenceProvider: prov);
 
             CancellationTokenSource src = new CancellationTokenSource();
 

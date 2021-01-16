@@ -1,5 +1,5 @@
-﻿using Akka.Actor;
-using Akka.Configuration;
+﻿
+using AkkaSb.Net;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -15,14 +15,14 @@ namespace AkkaHostLib
 
         protected ActorSystem AkkaClusterSystem;
 
-        public Task WhenTerminated => AkkaClusterSystem.WhenTerminated;
+       // public Task WhenTerminated => AkkaClusterSystem.WhenTerminated;
 
 
         public AkkaHostService()
         {
 
         }
-
+        
         public void Start(string hoconConfig, string pubHostName, string hostName, string systemName, string[] seedHosts, int port)
         {
             var strCfg = File.ReadAllText(hoconConfig);
@@ -56,16 +56,17 @@ namespace AkkaHostLib
 
             strCfg = strCfg.Replace("@HOSTNAME", hostName);
 
-            var config = ConfigurationFactory.ParseString(strCfg);
+            //var config = ConfigurationFactory.ParseString(strCfg);
 
             Console.WriteLine(strCfg);
 
-            AkkaClusterSystem = ActorSystem.Create(systemName, config);
+            //AkkaClusterSystem = ActorSystem.Create(systemName, config);
         }
 
         public Task Stop()
         {
-            return CoordinatedShutdown.Get(AkkaClusterSystem).Run(reason: CoordinatedShutdown.ClrExitReason.Instance);
+            return Task.CompletedTask;
+            //return CoordinatedShutdown.Get(AkkaClusterSystem).Run(reason: CoordinatedShutdown.ClrExitReason.Instance);
         }
 
         public void Start(string[] args)
@@ -99,7 +100,7 @@ namespace AkkaHostLib
             };
 
             Console.WriteLine("Press any key to stop AKKA.NET Node");
-            this.WhenTerminated.Wait();
+           // this.WhenTerminated.Wait();
         }
 
     }

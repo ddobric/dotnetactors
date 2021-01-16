@@ -17,7 +17,7 @@ namespace UnitTestsProject
         private string storageConnStr = "DefaultEndpointsProtocol=https;AccountName=azfunctionsamples;AccountKey=NEjFcvFNL/G7Ugq9RSW59+PonNgql/yLq8qfaVZPhanV9aJUnQi2b6Oy3csvPZPGVJreD+RgVUJJFFTZdUBhAA==;EndpointSuffix=core.windows.net";
 
         private List<object> list = new List<object>();
-
+        
         public class CounterActor : ActorBase
         {
             /// <summary>
@@ -82,9 +82,9 @@ namespace UnitTestsProject
             BlobStoragePersistenceProvider prov = new BlobStoragePersistenceProvider();
             prov.InitializeAsync(instanceName, new Dictionary<string, object>() { { "StorageConnectionString", storageConnStr } }, purgeOnStart: false).Wait();
 
-            var cfg = SbAkkaTest.GetLocaSysConfig();
+            var cfg = DotNetActorsTests.GetLocaSysConfig();
             ActorSystem sysLocal = new ActorSystem($"{nameof(BlobStatePersistenceTest)}/local", cfg);
-            ActorSystem sysRemote = new ActorSystem($"{nameof(BlobStatePersistenceTest)}/remote", SbAkkaTest.GetRemoteSysConfig(), persistenceProvider: prov);
+            ActorSystem sysRemote = new ActorSystem($"{nameof(BlobStatePersistenceTest)}/remote", DotNetActorsTests.GetRemoteSysConfig(), persistenceProvider: prov);
 
             CancellationTokenSource src = new CancellationTokenSource();
 
@@ -115,9 +115,9 @@ namespace UnitTestsProject
             BlobStoragePersistenceProvider prov = new BlobStoragePersistenceProvider();
             prov.InitializeAsync(instanceName, new Dictionary<string, object>() { { "StorageConnectionString", storageConnStr } }, purgeOnStart: false).Wait();
 
-            var cfg = SbAkkaTest.GetLocaSysConfig();
+            var cfg = DotNetActorsTests.GetLocaSysConfig();
             ActorSystem sysLocal = new ActorSystem($"{nameof(BlobStatePersistenceTest)}/local", cfg);
-            ActorSystem sysRemote = new ActorSystem($"{nameof(BlobStatePersistenceTest)}/remote", SbAkkaTest.GetRemoteSysConfig(), persistenceProvider: prov);
+            ActorSystem sysRemote = new ActorSystem($"{nameof(BlobStatePersistenceTest)}/remote", DotNetActorsTests.GetRemoteSysConfig(), persistenceProvider: prov);
 
             CancellationTokenSource src = new CancellationTokenSource();
 

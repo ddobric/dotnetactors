@@ -7,27 +7,31 @@ using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
-using NeoCortexApi.DistributedComputeLib;
+
 
 namespace UnitTestsProject
 {
     [TestClass]
-    public class SbAkkaTest
+    public class DotNetActorsTests
     {
-        //private const string sbConnStr = "Endpoint=sb://bastasample.servicebus.windows.net/;SharedAccessKeyName=demo;SharedAccessKey=MvwVbrrJdsMQyhO/0uwaB5mVbuXyvYa3WRNpalHi0LQ=";
-
-        private const string sbConnStr = "Endpoint=sb://students.servicebus.windows.net/;SharedAccessKeyName=stud-2018;SharedAccessKey=AQiFJiPtD0G/7y8hXStqt8CXZR+M1LSzOfGPiEoL0cc=";
-
-
-            private const string tblAccountConnStr = "DefaultEndpointsProtocol=https;AccountName=azfunctionsamples;AccountKey=NEjFcvFNL/G7Ugq9RSW59+PonNgql/yLq8qfaVZPhanV9aJUnQi2b6Oy3csvPZPGVJreD+RgVUJJFFTZdUBhAA==;EndpointSuffix=core.windows.net";
+        /// <summary>
+        /// Please make sure that environment variable 'SbConnStr' is set.
+        /// </summary>
+        public static string SbConnStr
+        {
+            get
+            {
+                return Environment.GetEnvironmentVariable("SbConnStr");
+            }
+        }
 
         internal static ActorSbConfig GetLocaSysConfig()
         {
             ActorSbConfig cfg = new ActorSbConfig();
-            cfg.SbConnStr = sbConnStr;
+            cfg.SbConnStr = SbConnStr;
             cfg.ReplyMsgQueue = "actorsystem/rcvlocal";
             cfg.RequestMsgTopic = "actorsystem/actortopic";
-            cfg.TblStoragePersistenConnStr = tblAccountConnStr;
+            //cfg.TblStoragePersistenConnStr = tblAccountConnStr;
             cfg.ActorSystemName = "inst701";
             return cfg;
         }
@@ -37,7 +41,7 @@ namespace UnitTestsProject
             var localCfg = GetLocaSysConfig();
 
             ActorSbConfig cfg = new ActorSbConfig();
-            cfg.SbConnStr = sbConnStr;
+            cfg.SbConnStr = SbConnStr;
             cfg.RequestMsgTopic = "actorsystem/actortopic";
             cfg.RequestSubscriptionName = node;
             cfg.ReplyMsgQueue = null;
@@ -175,27 +179,29 @@ namespace UnitTestsProject
         /// Tests if Ask() works as designed.
         /// </summary>
 
+
+        // TODO use some other types here
         //[TestMethod]
         //[TestCategory("SbActorTests")]
         //[TestCategory("SbActorHostRequired")]
-        public void AskTestClientOnly()
-        {
-            //Thread.Sleep(2000);
-            Debug.WriteLine($"Start of {nameof(AskTest)}");
+        //public void AskTestClientOnly()
+        //{
+        //    //Thread.Sleep(2000);
+        //    Debug.WriteLine($"Start of {nameof(AskTest)}");
 
-            var cfg = GetLocaSysConfig();
-            ActorSystem sysLocal = new ActorSystem($"{nameof(AskTest)}/local", cfg);
+        //    var cfg = GetLocaSysConfig();
+        //    ActorSystem sysLocal = new ActorSystem($"{nameof(AskTest)}/local", cfg);
 
-            CancellationTokenSource src = new CancellationTokenSource();
+        //    CancellationTokenSource src = new CancellationTokenSource();
 
-            ActorReference actorRef1 = sysLocal.CreateActor<HtmActor>(1);
+        //    ActorReference actorRef1 = sysLocal.CreateActor<HtmActor>(1);
 
-            var response = actorRef1.Ask<string>(new PingNodeMsg() { Msg = ":)" }).Result;
+        //    var response = actorRef1.Ask<string>(new PingNodeMsg() { Msg = ":)" }).Result;
 
-            Assert.IsTrue(response == $"Ping back - :)");
+        //    Assert.IsTrue(response == $"Ping back - :)");
 
-            Debug.WriteLine($"End of {nameof(AskTest)}");
-        }
+        //    Debug.WriteLine($"End of {nameof(AskTest)}");
+        //}
 
 
         /// <summary>

@@ -1,5 +1,4 @@
-﻿using Akka.Actor;
-using Akka.Configuration;
+﻿
 using AkkaSb.Net;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;

@@ -6,4 +6,8 @@
         <RootNamespace>dotnetactors</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\DotNetActors\DotNetActors.csproj" />
+    </ItemGroup>
+
 </Project>
