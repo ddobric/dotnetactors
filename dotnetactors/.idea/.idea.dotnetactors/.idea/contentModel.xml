@@ -29,21 +29,6 @@
         </e>
         <e p="TableStoragePersistenceProvider.cs" t="Include" />
       </e>
-      <e p="dotnetactors" t="IncludeRecursive">
-        <e p="bin" t="ExcludeRecursive" />
-        <e p="dotnetactors.csproj" t="IncludeRecursive" />
-        <e p="nuget" t="Include">
-          <e p="NeoCortexApi.1.0.8.nupkg" t="Include" />
-        </e>
-        <e p="obj" t="ExcludeRecursive">
-          <e p="Debug" t="Include">
-            <e p="netcoreapp3.1" t="Include">
-              <e p="dotnetactors.AssemblyInfo.cs" t="Include" />
-            </e>
-          </e>
-        </e>
-        <e p="Program.cs" t="Include" />
-      </e>
       <e p="dotnetactors.sln" t="IncludeFlat" />
       <e p="HtmAkkaHost" t="IncludeRecursive">
         <e p="ActorSbHostService.cs" t="Include" />
@@ -69,6 +54,21 @@
         <e p="Untitled1.ps1" t="Include" />
       </e>
       <e p="packages" t="ExcludeRecursive" />
+      <e p="source" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="nuget" t="Include">
+          <e p="NeoCortexApi.1.0.8.nupkg" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.1" t="Include">
+              <e p="source.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="source.csproj" t="IncludeRecursive" />
+      </e>
       <e p="UnitTestProject" t="IncludeRecursive">
         <e p="ActorSbBlobStoragePersistenceTests.cs" t="Include" />
         <e p="ActorSbTblStoragePersistenceTests.cs" t="Include" />

@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnetactors", "dotnetactors\dotnetactors.csproj", "{BE05F2FC-E6D7-4DF1-A5E9-D3D2E821EA5A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "source", "source\source.csproj", "{BE05F2FC-E6D7-4DF1-A5E9-D3D2E821EA5A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject", "UnitTestProject\UnitTestProject.csproj", "{B2CB0639-34BE-47CC-9CD0-9FDB09C09E12}"
 EndProject
