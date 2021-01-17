@@ -127,7 +127,7 @@ namespace UnitTestsProject
                 {
                     Assert.IsTrue(receivedMessages.Values.Contains("message 1"));
                     Assert.IsTrue(receivedMessages.Values.Contains("message 2"));
-                    Assert.IsTrue(receivedMessages.Values.Contains("UnitTestsProject.SbAkkaTest+TestClass"));
+                    Assert.IsTrue(receivedMessages.Values.Contains("UnitTestsProject.DotNetActorsTests+TestClass"));
                     src.Cancel();
                     break;
                 }
