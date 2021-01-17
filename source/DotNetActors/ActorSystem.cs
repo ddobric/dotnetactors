@@ -12,6 +12,7 @@ using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Reflection;
 using Microsoft.Extensions.Logging;
+using DotNetActors;
 
 namespace AkkaSb.Net
 {
@@ -209,7 +210,7 @@ namespace AkkaSb.Net
                             if (this.persistenceProvider != null)
                             {
                                 actor = await this.persistenceProvider.LoadActor(id);
-                                if(actor != null)
+                                if (actor != null)
                                     logger?.LogInformation($"{this.Name} - Loaded from pesisted store: {tp.Name}/{id}, actorMap: {actorMap.Keys.Count}");
                             }
 
@@ -250,7 +251,7 @@ namespace AkkaSb.Net
                         {
                             await this.sendReplyQueueClients[msg.ReplyTo].SendAsync(replyMsg);
 
-                            logger?.LogInformation($"{this.Name} - Replied : {tp.Name}/{id}, actorMap: {actorMap.Keys.Count}");
+                            logger?.LogTrace($"{this.Name} - Replied : {tp.Name}/{id}, actorMap: {actorMap.Keys.Count}");
                         }
 
                         await session.CompleteAsync(msg.SystemProperties.LockToken);
@@ -266,7 +267,9 @@ namespace AkkaSb.Net
                             await persistAndCleanupIfRequired(session);
 
                         if (!(ex is SessionLockLostException))
-                            await session.AbandonAsync(msg.SystemProperties.LockToken);
+                            await session.CompleteAsync(msg.SystemProperties.LockToken);
+
+                        await SendExceptionResponseIfRequired(msg, ex);
                     }
                 }
                 else
@@ -282,6 +285,30 @@ namespace AkkaSb.Net
                 }
 
                 break;
+            }
+        }
+
+        /// <summary>
+        /// Sends the message that describes the error.
+        /// </summary>
+        /// <param name="reqMsg">The request message whose processing caused the error.</param>
+        /// <param name="ex">The thrown exception.</param>
+        private async Task SendExceptionResponseIfRequired(Message reqMsg, Exception ex)
+        {
+            if (reqMsg.UserProperties[ActorReference.cExpectResponse] != null &&
+                (bool)reqMsg.UserProperties[ActorReference.cExpectResponse])
+            {
+                EnsureReplyClient(reqMsg.ReplyTo);
+
+                var replyMsg = ActorReference.CreateResponseMessage(new ActorException()
+                {
+                    Exception = ex.GetType().Name.ToString(),
+                    Error = ex.ToString()
+                }, reqMsg.MessageId, typeof(ActorException), null);
+
+                await this.sendReplyQueueClients[reqMsg.ReplyTo].SendAsync(replyMsg);
+
+                logger?.LogTrace($"{this.Name} - Replied as error! actorMap: {actorMap.Keys.Count}");
             }
         }
 
@@ -345,12 +372,7 @@ namespace AkkaSb.Net
                 var res = actor.Invoke(msg);
                 if (expectResponse)
                 {
-                    if (this.sendReplyQueueClients.ContainsKey(replyTo) == false)
-                    {
-                        this.sendReplyQueueClients.Add(replyTo, new QueueClient(this.sbConnStr, replyTo,
-                        retryPolicy: createRetryPolicy(),
-                        receiveMode: ReceiveMode.PeekLock));
-                    }
+                    EnsureReplyClient(replyTo);
 
                     var sbMsg = ActorReference.CreateResponseMessage(res, replyMsgId, actor.GetType(), actor.Id);
 
@@ -364,6 +386,16 @@ namespace AkkaSb.Net
                         return null;
                 }
             });
+        }
+
+        private void EnsureReplyClient(string replyTo)
+        {
+            if (this.sendReplyQueueClients.ContainsKey(replyTo) == false)
+            {
+                this.sendReplyQueueClients.Add(replyTo, new QueueClient(this.sbConnStr, replyTo,
+                retryPolicy: createRetryPolicy(),
+                receiveMode: ReceiveMode.PeekLock));
+            }
         }
 
         private bool IsMemoryCritical()

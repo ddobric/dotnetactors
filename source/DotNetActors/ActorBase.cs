@@ -47,7 +47,7 @@ namespace AkkaSb.Net
 
         public static implicit operator string(ActorId id)
         {
-            return id.IdAsString;
+            return id?.IdAsString;
         }
 
         public static implicit operator ActorId(long id)

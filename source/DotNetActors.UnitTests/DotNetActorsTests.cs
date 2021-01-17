@@ -29,7 +29,7 @@ namespace UnitTestsProject
         {
             ActorSbConfig cfg = new ActorSbConfig();
             cfg.SbConnStr = SbConnStr;
-            cfg.ReplyMsgQueue = "actorsystem/rcvlocal";
+            cfg.ReplyMsgQueue = "actorsystem/rcvlocal2";
             cfg.RequestMsgTopic = "actorsystem/actortopic";
             //cfg.TblStoragePersistenConnStr = tblAccountConnStr;
             cfg.ActorSystemName = "inst701";
