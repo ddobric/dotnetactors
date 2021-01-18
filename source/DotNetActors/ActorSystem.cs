@@ -147,7 +147,7 @@ namespace AkkaSb.Net
                                     Interlocked.Decrement(ref runningTasks);
                                     if (t.Exception != null)
                                     {
-                                        logger.LogError(t.Exception, $"Session error: {session.SessionId}");
+                                        logger?.LogError(t.Exception, $"Session error: {session.SessionId}");
                                     }
 
                                     await session.CloseAsync();
@@ -261,7 +261,7 @@ namespace AkkaSb.Net
                     }
                     catch (Exception ex)
                     {
-                        logger.LogWarning(ex, "Messsage processing error");
+                        logger?.LogWarning(ex, "Messsage processing error");
 
                         if (isPersistedAfterCalculus == false)
                             await persistAndCleanupIfRequired(session);

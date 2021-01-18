@@ -204,7 +204,7 @@ namespace AkkaSb.Net
         internal static byte[] SerializeMsg(object msg)
         {
             JsonSerializerSettings sett = new JsonSerializerSettings();
-            //sett.TypeNameHandling = TypeNameHandling.All;
+            sett.TypeNameHandling = TypeNameHandling.All;
 
             var strObj = JsonConvert.SerializeObject(msg, sett);
 

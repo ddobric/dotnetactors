@@ -29,7 +29,7 @@ namespace UnitTestsProject
         {
             ActorSbConfig cfg = new ActorSbConfig();
             cfg.SbConnStr = SbConnStr;
-            cfg.ReplyMsgQueue = "actorsystem/rcvlocal2";
+            cfg.ReplyMsgQueue = "actorsystem/rcvlocal";
             cfg.RequestMsgTopic = "actorsystem/actortopic";
             //cfg.TblStoragePersistenConnStr = tblAccountConnStr;
             cfg.ActorSystemName = "inst701";
@@ -131,7 +131,7 @@ namespace UnitTestsProject
                     src.Cancel();
                     break;
                 }
-                Thread.Sleep(250);
+                Thread.Sleep(1000);
             }
 
             task.Wait();
