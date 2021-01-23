@@ -8,8 +8,11 @@ using System;
 
 namespace DotNetActors.UnitTests
 {
+    /// <summary>
+    /// Integration tests that require running server. Befor starting these test, please run the host.
+    /// </summary>
     [TestClass]
-    public class UnitTest1
+    public class ClientTests
     {
         [TestMethod]
         [TestCategory("SbActorTests")]

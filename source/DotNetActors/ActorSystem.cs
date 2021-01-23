@@ -97,7 +97,7 @@ namespace AkkaSb.Net
                 };
 
                 // Register the function that receives reply messages.
-                ReplyMsgReceiverQueueClient.RegisterMessageHandler(OnMessageReceivedAsync, messageHandlerOptions);
+                ReplyMsgReceiverQueueClient.RegisterMessageHandler(OnReplyMessageReceivedAsync, messageHandlerOptions);
             }
         }
 
@@ -343,7 +343,15 @@ namespace AkkaSb.Net
 
         private ManualResetEvent rcvEvent = new ManualResetEvent(false);
 
-        private async Task OnMessageReceivedAsync(Message message, CancellationToken token)
+        /// <summary>
+        /// Invoked when the reply message is received.
+        /// The client sends the request to the arcor and start waiting for reply messages. All reply messages are stored in the receive message queue.
+        /// The actor reference code is responsible for correlation of messages.
+        /// </summary>
+        /// <param name="message">Message received from actor.</param>
+        /// <param name="token">Cancleation token. Currentlly not used.</param>
+        /// <returns></returns>
+        private async Task OnReplyMessageReceivedAsync(Message message, CancellationToken token)
         {
             logger?.LogInformation($"ActorSystem: {Name} Response received. receivedMsgQueue instance: {receivedMsgQueue.GetHashCode()}");
 

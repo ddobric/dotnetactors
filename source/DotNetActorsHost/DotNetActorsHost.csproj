@@ -20,6 +20,7 @@
 
 
    <ItemGroup>
+     <ProjectReference Include="..\ActorLibrary\ActorLibrary.csproj" />
      <ProjectReference Include="..\DotNetActors\DotNetActors.csproj" />
    </ItemGroup>
 

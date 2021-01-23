@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetActors.UnitTests", "D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActorLibrary", "ActorLibrary\ActorLibrary.csproj", "{1C5D10E6-23A0-4CAA-9408-4B899F693EFB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{8F56D115-0239-4FC8-89E0-A60A9D6C0F80}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +44,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BE05F2FC-E6D7-4DF1-A5E9-D3D2E821EA5A} = {8F56D115-0239-4FC8-89E0-A60A9D6C0F80}
+		{BECE89B9-1F8B-4F24-A1E3-F35542071B05} = {8F56D115-0239-4FC8-89E0-A60A9D6C0F80}
+		{1C5D10E6-23A0-4CAA-9408-4B899F693EFB} = {8F56D115-0239-4FC8-89E0-A60A9D6C0F80}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {765CC6DA-5F48-4C2F-92DA-5ADFF629AD94}

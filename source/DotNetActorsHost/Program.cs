@@ -1,4 +1,5 @@
-﻿using AkkaHostLib;
+﻿
+using AkkaSb.Net;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Configuration;
@@ -12,10 +13,6 @@ namespace HtmAkkaHost
         static void Main(string[] args)
         {
             Console.WriteLine("Hello HTM Actor Model Cluster!");
-
-            //AkkaHostService svc = new AkkaHostService();
-            //svc.Start(args);
-            //--port  8081  --sysname HtmCluster  --hosstname=localhost --publichostname=localhost
 
             ILoggerFactory factory = LoggerFactory.Create(logBuilder =>
             {
