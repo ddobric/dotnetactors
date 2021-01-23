@@ -1,5 +1,6 @@
 ﻿
 using AkkaSb.Net;
+using DotNetActors;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
@@ -35,7 +36,10 @@ namespace AkkaHostLib
             IConfigurationRoot configArgs = builder.Build();
 
             cfg.SbConnStr = configArgs["SbConnStr"];
-            cfg.ReplyMsgQueue = configArgs["ReplyMsgQueue"];
+            string rcvQueue = configArgs["ReplyMsgQueue"];
+            if (!String.IsNullOrEmpty(rcvQueue))
+                throw new ArgumentException("ReplyMsgQueue must not be specified when starting the server.");
+
             cfg.RequestMsgTopic = configArgs["RequestMsgTopic"];
             cfg.TblStoragePersistenConnStr = configArgs["TblStoragePersistenConnStr"];
             cfg.ActorSystemName = configArgs["ActorSystemName"];

@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetActorsHost", "DotNetA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetActors.UnitTests", "DotNetActors.UnitTests\DotNetActors.UnitTests.csproj", "{87DB6648-7BF3-4C2B-9F1C-8054763CD618}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActorLibrary", "ActorLibrary\ActorLibrary.csproj", "{1C5D10E6-23A0-4CAA-9408-4B899F693EFB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{87DB6648-7BF3-4C2B-9F1C-8054763CD618}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{87DB6648-7BF3-4C2B-9F1C-8054763CD618}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{87DB6648-7BF3-4C2B-9F1C-8054763CD618}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C5D10E6-23A0-4CAA-9408-4B899F693EFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C5D10E6-23A0-4CAA-9408-4B899F693EFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C5D10E6-23A0-4CAA-9408-4B899F693EFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C5D10E6-23A0-4CAA-9408-4B899F693EFB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
