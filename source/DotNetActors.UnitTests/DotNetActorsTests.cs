@@ -175,35 +175,7 @@ namespace UnitTestsProject
             Debug.WriteLine($"End of {nameof(AskTest)}");
         }
 
-        /// <summary>
-        /// Tests if Ask() works as designed.
-        /// </summary>
-
-
-        // TODO use some other types here
-        //[TestMethod]
-        //[TestCategory("SbActorTests")]
-        //[TestCategory("SbActorHostRequired")]
-        //public void AskTestClientOnly()
-        //{
-        //    //Thread.Sleep(2000);
-        //    Debug.WriteLine($"Start of {nameof(AskTest)}");
-
-        //    var cfg = GetLocaSysConfig();
-        //    ActorSystem sysLocal = new ActorSystem($"{nameof(AskTest)}/local", cfg);
-
-        //    CancellationTokenSource src = new CancellationTokenSource();
-
-        //    ActorReference actorRef1 = sysLocal.CreateActor<HtmActor>(1);
-
-        //    var response = actorRef1.Ask<string>(new PingNodeMsg() { Msg = ":)" }).Result;
-
-        //    Assert.IsTrue(response == $"Ping back - :)");
-
-        //    Debug.WriteLine($"End of {nameof(AskTest)}");
-        //}
-
-
+      
         /// <summary>
         /// Tests if Ask() works as designed.
         /// </summary>

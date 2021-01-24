@@ -5,6 +5,8 @@ namespace ActorLibrary
 {
     public class MyActor : ActorBase
     {
+        public DeviceState State { get; set; }
+
         public MyActor(ActorId id) : base(id)
         {
             Receive<string>((str) =>
@@ -13,10 +15,10 @@ namespace ActorLibrary
                 return null;
             });
 
-            Receive<TestClass>(((c) =>
+            Receive<DeviceState>(((deviceState) =>
             {
-                
-                return null;
+                this.State = deviceState;
+                return this.State;
             }));
 
             Receive<long>((long num) =>
@@ -33,10 +35,10 @@ namespace ActorLibrary
         }
     }
 
-    public class TestClass
+    public class DeviceState
     {
-        public int Prop1 { get; set; }
+        public string Color { get; set; }
 
-        public string Prop2 { get; set; }
+        public bool State { get; set; }
     }
 }

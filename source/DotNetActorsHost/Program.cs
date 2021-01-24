@@ -12,7 +12,7 @@ namespace HtmAkkaHost
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello HTM Actor Model Cluster!");
+            Console.WriteLine("Hello HTM Actor Model DotNetActorsHost sample :)");
 
             ILoggerFactory factory = LoggerFactory.Create(logBuilder =>
             {
