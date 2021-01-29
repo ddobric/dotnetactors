@@ -39,6 +39,29 @@ namespace DotNetActors.UnitTests
 
             Debug.WriteLine($"End of {nameof(AskClientTest)}");
         }
+        
+        [TestMethod]
+        [TestCategory("SbActorTests")]
+        [TestCategory("RequiresActorHost")]
+        public async Task AskClientTest_DeviceState()
+        {
+            Debug.WriteLine($"Start of {nameof(AskClientTest_DeviceState)}");
+
+            CancellationTokenSource src = new CancellationTokenSource();
+
+            var cfg = GetLocaSysConfig();
+
+            ActorSystem sysLocal = new ActorSystem($"{nameof(AskClientTest)}/local", cfg);
+
+            ActorReference actorRef1 = sysLocal.CreateActor<MyActor>(1);
+
+            var response = await actorRef1.Ask<DeviceState>(new DeviceState(){Color = "yellow", State = true});
+
+            Assert.IsTrue(response.State);
+            Assert.AreEqual(response.Color, "yellow");
+
+            Debug.WriteLine($"End of {nameof(AskClientTest_DeviceState)}");
+        }
 
         #region Private Members
 
