@@ -25,3 +25,4 @@ jobs:
       working-directory: source/
     - name: Test
       run: dotnet test --no-build --verbosity normal
+      working-directory: source/DotNetActors.UnitTests
