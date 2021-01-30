@@ -59,6 +59,13 @@ namespace UnitTestsProject
 
             public string Prop2 { get; set; }
         }
+        
+        public class DeviceState
+        {
+            public string Color { get; set; }
+
+            public bool State { get; set; }
+        }
 
         public class MyActor : ActorBase
         {
@@ -68,6 +75,13 @@ namespace UnitTestsProject
                 {
                     receivedMessages.TryAdd(str, str);
                     return null;
+                });
+                
+                Receive<DeviceState>((DeviceState) =>
+                {
+                    receivedMessages.TryAdd(DeviceState, DeviceState);
+                    DeviceState.Color = "braun";
+                    return DeviceState;
                 });
 
                 Receive<TestClass>(((c) =>
@@ -263,6 +277,33 @@ namespace UnitTestsProject
                     Assert.IsTrue(dtRes.Month == 1);
                 }
             });
+        }
+        
+        [TestMethod]
+        [TestCategory("SbActorTests")]
+        public void AskTestDeviceState()
+        {
+            Debug.WriteLine($"Start of {nameof(AskTestDeviceState)}");
+
+            ActorSystem sysRemote = new ActorSystem($"{nameof(AskTest)}/remote", GetRemoteSysConfig());
+
+            CancellationTokenSource src = new CancellationTokenSource();
+
+            var task = Task.Run(() =>
+            {
+                sysRemote.Start(src.Token);
+            });
+
+            var cfg = GetLocaSysConfig();
+
+            ActorSystem sysLocal = new ActorSystem($"{nameof(AskTest)}/local", cfg);
+
+            ActorReference actorRef1 = sysLocal.CreateActor<MyActor>(1);
+
+            var response = actorRef1.Ask<DeviceState>(new DeviceState() {Color = "green", State = true}).Result;
+            Assert.AreEqual(response.Color, "braun");
+            Assert.IsTrue(response.State);
+            Debug.WriteLine($"End of {nameof(AskTestDeviceState)}");
         }
     }
 }
