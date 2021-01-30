@@ -21,21 +21,31 @@ namespace ActorLibrary
                 return this.State;
             }));
 
-            Receive<long>((long num) =>
+            Receive<GetDeviceState>((devicestate) =>
             {
-                
+                return this.State;
+            });
+
+            Receive<long>((long num) =>
+            {                
                 return num + 1;
             });
 
             Receive<DateTime>((DateTime dt) =>
-            {
-                
+            {                
                 return dt.AddDays(1);
             });
         }
     }
 
     public class DeviceState
+    {
+        public string Color { get; set; }
+
+        public bool State { get; set; }
+    }
+
+    public class GetDeviceState
     {
         public string Color { get; set; }
 

@@ -30,11 +30,18 @@ namespace dotnetactors
                        
             response = actorRef1.Ask<long>((long)7).Result;
 
-            ActorReference actorRef2 = sysLocal.CreateActor<MyActor>(77);
+            ActorReference actorRef77 = sysLocal.CreateActor<MyActor>(77);
 
             var resp = await actorRef1.Ask<DeviceState>(new DeviceState() { Color = "green", State = true });
 
-        
+            var state = await actorRef1.Ask<DeviceState>(new GetDeviceState());
+
+
+            ActorReference actorRef1017 = sysLocal.CreateActor<MyActor>(1017);
+
+            resp = await actorRef1017.Ask<DeviceState>(new DeviceState() { Color = "blue", State = true });
+
+            state = await actorRef1017.Ask<DeviceState>(new GetDeviceState());
         }
     }
 }
