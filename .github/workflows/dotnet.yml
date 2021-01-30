@@ -22,5 +22,6 @@ jobs:
       working-directory: source/
     - name: Build
       run: dotnet build --no-restore
+      working-directory: source/
     - name: Test
       run: dotnet test --no-build --verbosity normal
