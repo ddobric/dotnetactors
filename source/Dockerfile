@@ -2,7 +2,7 @@ FROM mcr.microsoft.com/dotnet/runtime:5.0 AS base
 WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
-ENV SbConnStr = 'Endpoint=sb://actorsb.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=VKHsVqYHFqjAScWUrX/zg/6JidYvgN29LmKOnqgQ1vs='
+
 WORKDIR /src
 COPY ["DotNetActorsHost/DotNetActorsHost.csproj", "DotNetActorsHost/"]
 COPY ["DotNetActors/DotNetActors.csproj", "DotNetActors/"]

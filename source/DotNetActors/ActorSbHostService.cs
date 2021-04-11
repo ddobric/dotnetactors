@@ -16,7 +16,7 @@ namespace AkkaSb.Net
     {
         ILogger logger;
 
-        private AkkaSb.Net.ActorSystem akkaClusterSystem;
+        private ActorSystem akkaClusterSystem;
 
         private CancellationTokenSource tokenSrc = new CancellationTokenSource();
 
@@ -59,7 +59,7 @@ namespace AkkaSb.Net
                 prov.InitializeAsync(cfg.ActorSystemName, new Dictionary<string, object>() { { "StorageConnectionString", cfg.TblStoragePersistenConnStr } }, purgeOnStart: false, logger: this.logger).Wait();
             }
 
-            akkaClusterSystem = new AkkaSb.Net.ActorSystem($"{systemName}", cfg, logger, prov);
+            akkaClusterSystem = new ActorSystem($"{systemName}", cfg, logger, prov);
             akkaClusterSystem.Start(tokenSrc.Token);
 
             Console.WriteLine("Press any key to stop Actor SB system.");

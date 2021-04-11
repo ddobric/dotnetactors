@@ -59,6 +59,13 @@ namespace AkkaSb.Net
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="config"></param>
+        /// <param name="logger"></param>
+        /// <param name="persistenceProvider"></param>
         public ActorSystem(string name, ActorSbConfig config, ILogger logger = null, IPersistenceProvider persistenceProvider = null)
         {
             this.logger = logger;
@@ -66,14 +73,15 @@ namespace AkkaSb.Net
             this.Name = name;
             this.sbConnStr = config.SbConnStr;
             this.subscriptionName = config.RequestSubscriptionName;
+            
+            // Microsoft azure service bus SessionClient
             this.sessionRcvClient = new SessionClient(config.SbConnStr, $"{config.RequestMsgTopic}/Subscriptions/{config.RequestSubscriptionName}",
             retryPolicy: createRetryPolicy(),
             receiveMode: ReceiveMode.PeekLock);
 
             this.sendRequestClient = new TopicClient(config.SbConnStr, config.RequestMsgTopic,
             retryPolicy: createRetryPolicy());
-
-            //
+            
             // Receiving of reply messages is optional. If the actor system does not send messages
             // then it will also not listen for reply messages.
             if (config.ReplyMsgQueue != null)

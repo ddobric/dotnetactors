@@ -176,10 +176,7 @@ namespace AkkaSb.Net
 
             return strObj;
         }
-
-     
-
-
+        
         #endregion
     }
 }
