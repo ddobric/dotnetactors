@@ -70,6 +70,7 @@ namespace AkkaSb.Net
         /// <returns></returns>
         public async Task<TResponse> Ask<TResponse>(object msg, TimeSpan? timeout = null, string routeToNode = null)
         {
+            // Creates a message 
             var sbMsg = CreateMessage(msg, true, actorType, actorId, routeToNode);
             sbMsg.ReplyTo = this.replyQueueName;
 
@@ -168,6 +169,7 @@ namespace AkkaSb.Net
         /// <returns></returns>
         internal static Message CreateMessage(object msg, bool expectResponse, Type actorType, ActorId actorId, string node)
         {
+            // Message is a Microsoft service bus data type
             Message sbMsg = new Message(SerializeMsg(msg));
 
             sbMsg.UserProperties.Add(cActorType, actorType.AssemblyQualifiedName);

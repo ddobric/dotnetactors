@@ -11,7 +11,6 @@ namespace ActorLibrary
         {
             Receive<string>((str) =>
             {
-               
                 return null;
             });
 

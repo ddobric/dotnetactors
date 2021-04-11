@@ -1,0 +1,4 @@
+export SbConnStr='Endpoint=sb://actorsb.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=VKHsVqYHFqjAScWUrX/zg/6JidYvgN29LmKOnqgQ1vs='
+
+
+dotnet run --SystemName=HelloCluster --RequestMsgTopic=actorsystem/actortopic --RequestMsgQueue=actorsystem/actorqueue --ActorSystemName=systemzero --SubscriptionName=default

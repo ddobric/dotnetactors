@@ -1,14 +1,9 @@
 ﻿
-using AkkaSb.Net;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace AkkaSb.Net
 {
@@ -31,11 +26,9 @@ namespace AkkaSb.Net
 
             var builder = new ConfigurationBuilder();
             builder.AddCommandLine(args);
-            // builder.AddEnvironmentVariables();
+            builder.AddEnvironmentVariables();
             IConfigurationRoot configArgs = builder.Build();
-
             cfg.SbConnStr = configArgs["SbConnStr"];
-            Console.WriteLine(cfg.SbConnStr.ToString());
             string rcvQueue = configArgs["ReplyMsgQueue"];
             if (!String.IsNullOrEmpty(rcvQueue))
                 throw new ArgumentException("ReplyMsgQueue must not be specified when starting the server.");

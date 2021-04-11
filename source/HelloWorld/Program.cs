@@ -34,7 +34,6 @@ namespace dotnetactors
 
             var resp = await actorRef1.Ask<DeviceState>(new DeviceState() { Color = "green", State = true });
 
-        
         }
     }
 }

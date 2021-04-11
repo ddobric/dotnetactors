@@ -135,7 +135,7 @@ namespace AkkaSb.Net
 
                     if (val >= 10)
                     {
-                        logger?.LogWarning($"Accepted maximal nuber of sessions: {runningTasks}.");
+                        logger?.LogWarning($"Accepted maximal number of sessions: {runningTasks}.");
 
                         await Task.Delay(1000);
 
