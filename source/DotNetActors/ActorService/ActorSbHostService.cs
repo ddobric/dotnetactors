@@ -31,11 +31,11 @@ namespace AkkaSb.Net
 
             var builder = new ConfigurationBuilder();
             builder.AddCommandLine(args);
-            builder.AddEnvironmentVariables();
+            // builder.AddEnvironmentVariables();
             IConfigurationRoot configArgs = builder.Build();
 
             cfg.SbConnStr = configArgs["SbConnStr"];
-
+            Console.WriteLine(cfg.SbConnStr.ToString());
             string rcvQueue = configArgs["ReplyMsgQueue"];
             if (!String.IsNullOrEmpty(rcvQueue))
                 throw new ArgumentException("ReplyMsgQueue must not be specified when starting the server.");
@@ -61,7 +61,6 @@ namespace AkkaSb.Net
 
             akkaClusterSystem = new ActorSystem($"{systemName}", cfg, logger, prov);
             akkaClusterSystem.Start(tokenSrc.Token);
-
             Console.WriteLine("Press any key to stop Actor SB system.");
 
         }
