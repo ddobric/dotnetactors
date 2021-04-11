@@ -5,7 +5,7 @@ namespace ActorLibrary
 {
     public class MyActor : ActorBase
     {
-        public DeviceState State { get; set; }
+        public DeviceState deviceStateState { get; set; }
 
         public MyActor(ActorId id) : base(id)
         {
@@ -16,13 +16,14 @@ namespace ActorLibrary
 
             Receive<DeviceState>(((deviceState) =>
             {
-                this.State = deviceState;
-                return this.State;
+                deviceStateState = new DeviceState();
+                deviceStateState.Color = "Blue";
+                deviceStateState.State = false;
+                return deviceStateState;
             }));
 
             Receive<long>((long num) =>
             {
-                
                 return num + 1;
             });
 
