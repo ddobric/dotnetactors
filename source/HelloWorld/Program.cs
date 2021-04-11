@@ -25,15 +25,14 @@ namespace dotnetactors
             ActorSystem sysLocal = new ActorSystem($"Hello World", cfg);
 
             ActorReference actorRef1 = sysLocal.CreateActor<MyActor>(1);
+            ActorReference actorRef2 = sysLocal.CreateActor<MyActor>(77);
 
             var response = await actorRef1.Ask<long>((long)42);
-                       
             response = actorRef1.Ask<long>((long)7).Result;
-
-            ActorReference actorRef2 = sysLocal.CreateActor<MyActor>(77);
 
             var resp = await actorRef1.Ask<DeviceState>(new DeviceState() { Color = "green", State = true });
 
+            var stringResponse = await actorRef1.Ask<DateTime>(DateTime.Now);
         }
     }
 }
