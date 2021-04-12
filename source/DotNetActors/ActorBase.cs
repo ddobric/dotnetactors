@@ -1,12 +1,8 @@
 ﻿// Copyright (c) Damir Dobric. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
-using Microsoft.Azure.ServiceBus;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Linq;
 using Microsoft.Extensions.Logging;
@@ -128,7 +124,7 @@ namespace AkkaSb.Net
         }
 
         /// <summary>
-        /// You must invoke this method to register the reciever handler.
+        /// You must invoke this method to register the receiver handler.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="handler"></param>

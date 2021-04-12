@@ -25,6 +25,10 @@ namespace UnitTestsProject
             }
         }
 
+        /// <summary>
+        /// Gets the Local System configuration
+        /// </summary>
+        /// <returns></returns>
         internal static ActorSbConfig GetLocaSysConfig()
         {
             ActorSbConfig cfg = new ActorSbConfig();
@@ -36,16 +40,19 @@ namespace UnitTestsProject
             return cfg;
         }
 
+        /// <summary>
+        /// Gets the remote system configurations
+        /// </summary>
+        /// <param name="node"></param>
+        /// <returns></returns>
         internal static ActorSbConfig GetRemoteSysConfig(string node = "default")
         {
             var localCfg = GetLocaSysConfig();
-
             ActorSbConfig cfg = new ActorSbConfig();
             cfg.SbConnStr = SbConnStr;
             cfg.RequestMsgTopic = "actorsystem/actortopic";
             cfg.RequestSubscriptionName = node;
             cfg.ReplyMsgQueue = null;
-
             return cfg;
         }
 
@@ -53,6 +60,9 @@ namespace UnitTestsProject
         static ConcurrentDictionary<object, object> receivedMessages = new ConcurrentDictionary<object, object>();
 
 
+        /// <summary>
+        /// Represents the Test class
+        /// </summary>
         public class TestClass
         {
             public int Prop1 { get; set; }
@@ -60,6 +70,9 @@ namespace UnitTestsProject
             public string Prop2 { get; set; }
         }
         
+        /// <summary>
+        /// Represents the Device state
+        /// </summary>
         public class DeviceState
         {
             public string Color { get; set; }
@@ -67,6 +80,9 @@ namespace UnitTestsProject
             public bool State { get; set; }
         }
 
+        /// <summary>
+        /// Represents MyActor Class
+        /// </summary>
         public class MyActor : ActorBase
         {
             public MyActor(ActorId id) : base(id)
@@ -111,15 +127,12 @@ namespace UnitTestsProject
 
         [TestMethod]
         [TestCategory("SbActorTests")]
-
         public void TellTest()
         {
             Debug.WriteLine($"Start of {nameof(TellTest)}");
-
             var cfg = GetLocaSysConfig();
-            ActorSystem sysLocal = new AkkaSb.Net.ActorSystem($"{nameof(TellTest)}/local", cfg);
+            ActorSystem sysLocal = new ActorSystem($"{nameof(TellTest)}/local", cfg);
             ActorSystem sysRemote = new ActorSystem($"{nameof(TellTest)}/remote", GetRemoteSysConfig());
-
             CancellationTokenSource src = new CancellationTokenSource();
 
             var task = Task.Run(() =>
@@ -129,19 +142,15 @@ namespace UnitTestsProject
 
             ActorReference actorRef1 = sysLocal.CreateActor<MyActor>(1);
             actorRef1.Tell("message 1").Wait();
-
-            actorRef1.Tell(new TestClass()).Wait();
-
             ActorReference actorRef2 = sysLocal.CreateActor<MyActor>(2);
             actorRef2.Tell("message 2").Wait();
 
             while (true)
             {
-                if (receivedMessages.Count == 3)
+                if (receivedMessages.Count == 2)
                 {
                     Assert.IsTrue(receivedMessages.Values.Contains("message 1"));
-                    Assert.IsTrue(receivedMessages.Values.Contains("message 2"));
-                    Assert.IsTrue(receivedMessages.Values.Contains("UnitTestsProject.DotNetActorsTests+TestClass"));
+                    Assert.IsTrue(receivedMessages.Values.Contains("message 1"));
                     src.Cancel();
                     break;
                 }

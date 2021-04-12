@@ -11,7 +11,7 @@ namespace ActorLibrary
         {
             Receive<string>((str) =>
             {
-                return null;
+                return str + "Message from Actor";
             });
 
             Receive<DeviceState>(((deviceState) =>
