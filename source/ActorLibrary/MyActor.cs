@@ -3,6 +3,9 @@ using System;
 
 namespace ActorLibrary
 {
+    /// <summary>
+    /// Represents MyActor class
+    /// </summary>
     public class MyActor : ActorBase
     {
         public DeviceState deviceStateState { get; set; }

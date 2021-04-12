@@ -1,8 +1,6 @@
 FROM mcr.microsoft.com/dotnet/core/runtime:2.2-stretch-slim AS base
 WORKDIR /app
 
-# TODO: How to pass argument variables and how to set up the environment variable before executing the dotnet run file, line 25
-
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build
 WORKDIR /src
 COPY ["HtmAkkaHost/HtmAkkaHost.csproj", "HtmAkkaHost/"]
