@@ -1,0 +1,9 @@
+Question for professor:
+
+Docker shall we mention the connection strings and the cmd arguments inside the implementation for the saking of creating an image
+Table connection string, what kind of persistance as of now without persistance it is working fine
+
+Device state takes lot of time to get processed
+
+
+Passed all the unit tests

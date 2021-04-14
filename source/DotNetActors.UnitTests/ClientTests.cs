@@ -53,12 +53,12 @@ namespace DotNetActors.UnitTests
 
             ActorSystem sysLocal = new ActorSystem($"{nameof(AskClientTest)}/local", cfg);
 
-            ActorReference actorRef1 = sysLocal.CreateActor<MyActor>(1);
+            ActorReference actorRef1 = sysLocal.CreateActor<MyActor>(2);
 
             var response = await actorRef1.Ask<DeviceState>(new DeviceState(){Color = "yellow", State = true});
 
-            Assert.IsTrue(response.State);
-            Assert.AreEqual(response.Color, "yellow");
+            Assert.IsFalse(response.State);
+            Assert.AreEqual(response.Color, "blue");
 
             Debug.WriteLine($"End of {nameof(AskClientTest_DeviceState)}");
         }
@@ -72,7 +72,8 @@ namespace DotNetActors.UnitTests
         {
             get
             {
-                return Environment.GetEnvironmentVariable("TblAccountConnStr");
+                // TODO: Revert the name to TblAccountConnStr
+                return Environment.GetEnvironmentVariable("SbConnStr");
             }
         }
 

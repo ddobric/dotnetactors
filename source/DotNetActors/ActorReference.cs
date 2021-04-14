@@ -6,8 +6,6 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -70,7 +68,7 @@ namespace AkkaSb.Net
         /// <returns></returns>
         public async Task<TResponse> Ask<TResponse>(object msg, TimeSpan? timeout = null, string routeToNode = null)
         {
-            // Creates a message 
+            // Creates a message
             var sbMsg = CreateMessage(msg, true, actorType, actorId, routeToNode);
             sbMsg.ReplyTo = this.replyQueueName;
 
