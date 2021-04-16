@@ -2,7 +2,7 @@ FROM mcr.microsoft.com/dotnet/runtime:5.0 AS base
 WORKDIR /app
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 
-# TODO: How to pass argument variables and how to set up the environment variable before executing the dotnet run file, line 25
+# TODO: To pass argument variables and To set up the environment variable before executing the dotnet run file, line 25
 
 
 WORKDIR /src
