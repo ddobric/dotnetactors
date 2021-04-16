@@ -21,4 +21,10 @@
     <ProjectReference Include="..\DotNetActors\DotNetActors.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="UnitTesting\ActorExceptionTests" />
+    <Folder Include="UnitTesting\ActorPersistenceTest" />
+    <Folder Include="UnitTesting\ActorServiceTest" />
+  </ItemGroup>
+
 </Project>
