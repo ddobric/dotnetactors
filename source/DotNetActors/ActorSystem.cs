@@ -16,6 +16,10 @@ using DotNetActors;
 
 namespace AkkaSb.Net
 {
+    
+    /// <summary>
+    /// Represents the actor system class
+    /// </summary>
     public class ActorSystem
     {
         private string sbConnStr;

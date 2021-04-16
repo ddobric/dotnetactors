@@ -7,6 +7,9 @@ using System.Threading;
 
 namespace AkkaSb.Net
 {
+    /// <summary>
+    /// Represents the Actor Service Bus Host Service
+    /// </summary>
     public class ActorSbHostService
     {
         ILogger logger;
@@ -20,6 +23,11 @@ namespace AkkaSb.Net
             this.logger = logger;
         }
 
+        /// <summary>
+        /// Represents the Start method
+        /// </summary>
+        /// <param name="args">Command line arguments</param>
+        /// <exception cref="ArgumentException">Exception if arguments are not passed correctly</exception>
         public void Start(string[] args)
         {
             ActorSbConfig cfg = new ActorSbConfig();

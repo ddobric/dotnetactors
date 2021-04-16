@@ -12,6 +12,9 @@ using System.Threading.Tasks;
 
 namespace AkkaSb.Net
 {
+    /// <summary>
+    /// Represents the Actor Reference class
+    /// </summary>
     public class ActorReference
     {
         public const string cActorType = "ActorType";

@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetActors", "DotNetActor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetActorsHost", "DotNetActorsHost\DotNetActorsHost.csproj", "{BECE89B9-1F8B-4F24-A1E3-F35542071B05}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetActors.UnitTests", "DotNetActors.UnitTests\DotNetActors.UnitTests.csproj", "{87DB6648-7BF3-4C2B-9F1C-8054763CD618}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetActors.Tests", "DotNetActors.Tests\DotNetActors.Tests.csproj", "{87DB6648-7BF3-4C2B-9F1C-8054763CD618}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActorLibrary", "ActorLibrary\ActorLibrary.csproj", "{1C5D10E6-23A0-4CAA-9408-4B899F693EFB}"
 EndProject

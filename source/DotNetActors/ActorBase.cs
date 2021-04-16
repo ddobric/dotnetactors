@@ -12,6 +12,9 @@ using System.Runtime.CompilerServices;
 
 namespace AkkaSb.Net
 {
+    /// <summary>
+    /// Represents the Actor ID class
+    /// </summary>
     public class ActorId
     {
         
@@ -53,6 +56,9 @@ namespace AkkaSb.Net
 
     }
 
+    /// <summary>
+    /// Represents the Actor Base class
+    /// </summary>
     public class ActorBase
     {
         internal Dictionary<Type, Delegate> dict = new Dictionary<Type, Delegate>();
