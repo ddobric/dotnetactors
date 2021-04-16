@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace AkkaSb.Net
 {
+    /// <summary>
+    /// Represents Interface for persistence. Below methods will be implemented as per the need
+    /// </summary>
     public interface IPersistenceProvider
     {
         Task InitializeAsync(string name, Dictionary<string, object> setrtings, bool purgeOnStart = false, ILogger logger = null);

@@ -12,6 +12,9 @@ using System.Threading.Tasks;
 
 namespace AkkaSb.Net
 {
+    /// <summary>
+    /// Represents Class Blob Storage Persistence
+    /// </summary>
     public class BlobStoragePersistenceProvider : IPersistenceProvider
     {
         const string cConnStr = "StorageConnectionString";
@@ -27,6 +30,15 @@ namespace AkkaSb.Net
         private ILogger logger;
 
 
+        /// <summary>
+        /// represents Initialize method
+        /// </summary>
+        /// <param name="actorSystemId">Represents Actor System ID</param>
+        /// <param name="settings">Represents Settings Dictionary</param>
+        /// <param name="purgeOnStart">Represents Purge on Start Boolean value</param>
+        /// <param name="logger">Used to log the activities</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
         public async Task InitializeAsync(string actorSystemId, Dictionary<string, object> settings, bool purgeOnStart = false, ILogger logger = null)
         {
             this.actorSystemId = actorSystemId;
@@ -59,6 +71,11 @@ namespace AkkaSb.Net
             }
         }
 
+        /// <summary>
+        /// Method to load the Actor
+        /// </summary>
+        /// <param name="actorId">Represents Actor ID</param>
+        /// <returns></returns>
         public async Task<ActorBase> LoadActor(ActorId actorId)
         {
             this.logger?.LogTrace("Loading actor: {0}", actorId);
@@ -74,6 +91,11 @@ namespace AkkaSb.Net
         }
 
 
+        /// <summary>
+        /// Represents method to Persist Actor
+        /// </summary>
+        /// <param name="actorInstance"></param>
+        /// <returns></returns>
         public async Task PersistActor(ActorBase actorInstance)
         {
             this.logger?.LogInformation("Persisting actor: {0}", actorInstance.Id);
@@ -86,6 +108,10 @@ namespace AkkaSb.Net
         }
 
 
+        /// <summary>
+        /// Represents Method purge
+        /// </summary>
+        /// <returns></returns>
         public async Task Purge()
         {
             this.logger?.LogTrace("Purge started");

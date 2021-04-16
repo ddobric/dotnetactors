@@ -13,6 +13,9 @@ namespace dotnetactors
 {
     class Program
     {
+        /// <summary>
+        /// Represents Main class that initialise the client and asks a response from the service
+        /// </summary>
         static async Task Main(string[] args)
         {
             Console.WriteLine("Hello World!");
@@ -41,6 +44,10 @@ namespace dotnetactors
             logger?.LogInformation("Successfully tested the functionality");
         }
 
+        /// <summary>
+        /// Method to enable logging
+        /// </summary>
+        /// <returns></returns>
         private static ILogger generateLogger()
         {
             ILoggerFactory factory = LoggerFactory.Create(logBuilder =>

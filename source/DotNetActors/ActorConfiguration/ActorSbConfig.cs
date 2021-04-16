@@ -6,6 +6,9 @@ using System.Text;
 
 namespace AkkaSb.Net
 {
+    /// <summary>
+    /// Represents ActorSBConfig class
+    /// </summary>
     public class ActorSbConfig 
     {
         public string ActorSystemName{ get; set; }

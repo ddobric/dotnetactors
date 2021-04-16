@@ -6,6 +6,9 @@ using System;
 namespace HtmAkkaHost
 {
 
+    /// <summary>
+    /// Represents Main class that initialize the ActorSBHostService
+    /// </summary>
     class Program
     {
 

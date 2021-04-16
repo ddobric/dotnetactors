@@ -38,6 +38,9 @@ namespace ActorLibrary
         }
     }
 
+    /// <summary>
+    /// Represents DeviceState class
+    /// </summary>
     public class DeviceState
     {
         public string Color { get; set; }

@@ -11,6 +11,10 @@ using System.Threading.Tasks;
 
 namespace AkkaSb.Net
 {
+    
+    /// <summary>
+    ///  Represents file storage persistence class
+    /// </summary>
     public class FileStoragePersistenceProvider : IPersistenceProvider
     {
         private string actorSystemId;
@@ -20,6 +24,14 @@ namespace AkkaSb.Net
         private ILogger logger;
 
 
+        /// <summary>
+        /// Initialises the task
+        /// </summary>
+        /// <param name="actorSystemId"> Actor system ID</param>
+        /// <param name="settings"> Settings Dictionary</param>
+        /// <param name="purgeOnStart"> Boolean value for purge on start</param>
+        /// <param name="logger"> Logger value</param>
+        /// <returns></returns>
         public async Task InitializeAsync(string actorSystemId, Dictionary<string, object> settings, bool purgeOnStart = false, ILogger logger = null)
         {
             this.actorSystemId = actorSystemId;
@@ -46,6 +58,12 @@ namespace AkkaSb.Net
             }
         }
 
+      
+        /// <summary>
+        /// Loads the Actor
+        /// </summary>
+        /// <param name="actorId">Represents ActorID</param>
+        /// <returns></returns>
         public async Task<ActorBase> LoadActor(ActorId actorId)
         {
             this.logger?.LogTrace("Loading actor: {0}", actorId);
@@ -61,6 +79,11 @@ namespace AkkaSb.Net
         }
 
 
+        /// <summary>
+        /// Represents method Persist Actor
+        /// </summary>
+        /// <param name="actorInstance"> Represents ActorInstance</param>
+        /// <returns></returns>
         public async Task PersistActor(ActorBase actorInstance)
         {
             this.logger?.LogTrace("Persisting actor: {0}", actorInstance.Id);
@@ -73,6 +96,10 @@ namespace AkkaSb.Net
         }
 
 
+        /// <summary>
+        /// Represents Method Purge
+        /// </summary>
+        /// <returns></returns>
         public async Task Purge()
         {
             this.logger?.LogTrace("Purge started");
