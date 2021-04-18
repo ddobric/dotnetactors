@@ -5,7 +5,6 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace AkkaSb.Net
@@ -95,6 +94,9 @@ namespace AkkaSb.Net
             this.logger?.LogTrace("Persisting actor: {0}", actorInstance.Id);
 
             var serializedEntity = SerializeActor(actorInstance);
+
+            ActorEntity actorEntity = new ActorEntity(this.actorSystemId, actorInstance.Id.IdAsString);
+            actorEntity.SerializedActor = serializedEntity;
 
             await InsertOrMergeEntityAsync(this.table, new ActorEntity(this.actorSystemId, actorInstance.Id.IdAsString) { SerializedActor = serializedEntity });
 

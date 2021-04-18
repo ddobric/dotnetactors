@@ -13,7 +13,7 @@ namespace UnitTestsProject
     [TestClass]
     public class ActorSbTblStoragePersistenceTests
     {
-        private string storageConnStr = "DefaultEndpointsProtocol=https;AccountName=azfunctionsamples;AccountKey=NEjFcvFNL/G7Ugq9RSW59+PonNgql/yLq8qfaVZPhanV9aJUnQi2b6Oy3csvPZPGVJreD+RgVUJJFFTZdUBhAA==;EndpointSuffix=core.windows.net";
+        private string storageConnStr = "DefaultEndpointsProtocol=https;AccountName=dotnetactors;AccountKey=mGLCq7CHPfy6Ivp23iU3hdDqGvEmyBxVAUkU1b89YeKVWKAHry3CTM7N7orGV0XCmhXdv0z7CgfYxh0MMj30Eg==;TableEndpoint=https://dotnetactors.table.cosmos.azure.com:443/;";
 
         private List<object> list = new List<object>();
 
@@ -86,18 +86,19 @@ namespace UnitTestsProject
         /// 1. Run RunStatePersistenceTest1
         /// 2. Copy 'instanceName' of the test to clipboard.
         /// 3. Comment out RunStatePersistenceTest1 and comment in RunStatePersistenceTest2.
-        /// 4. Set  instanceName to value in clopboard.
+        /// 4. Set  instanceName to value in clipboard.
         /// </summary>
         [TestMethod]
         [TestCategory("SbActorTests")]
         public void TblStatePersistenceTest()
         {
             string instanceName = "instance1603690222";
+            
             // Runs actor counter and persis its state after every increment.
             //RunStatePersistenceTest1(instanceName);
 
             // Runs actor counter by loading its state.
-            RunStatePersistenceTest1(instanceName);
+           RunStatePersistenceTest2(instanceName);
         }
 
         private void RunStatePersistenceTest1(string instanceName)
@@ -105,13 +106,12 @@ namespace UnitTestsProject
             Debug.WriteLine($"Start of {nameof(RunStatePersistenceTest1)}");
 
             TableStoragePersistenceProvider prov = new TableStoragePersistenceProvider();
-           // prov.InitializeAsync(instanceName, new Dictionary<string, object>() { { "StorageConnectionString", storageConnStr } }, purgeOnStart: false).Wait();
+            prov.InitializeAsync(instanceName, new Dictionary<string, object>() { { "StorageConnectionString", storageConnStr } }, purgeOnStart: false).Wait();
 
             var cfg = DotNetActorsTests.GetLocaSysConfig();
             ActorSystem sysLocal = new ActorSystem($"{nameof(TblStatePersistenceTest)}/local", cfg);
             
-            // TODO: Passing persistence provider null until connection string is not fixed
-            ActorSystem sysRemote = new ActorSystem($"{nameof(TblStatePersistenceTest)}/remote", DotNetActorsTests.GetRemoteSysConfig(), null);
+            ActorSystem sysRemote = new ActorSystem($"{nameof(TblStatePersistenceTest)}/remote", DotNetActorsTests.GetRemoteSysConfig(), persistenceProvider:prov);
 
             CancellationTokenSource src = new CancellationTokenSource();
 

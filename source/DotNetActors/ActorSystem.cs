@@ -228,6 +228,7 @@ namespace AkkaSb.Net
 
                             if (actor == null)
                             {
+                                // Which type pf actor we want to create
                                 actor = Activator.CreateInstance(tp, id) as ActorBase;
                                 logger?.LogInformation($"{this.Name} - New instance created: {tp.Name}/{id}, actorMap: {actorMap.Keys.Count}");
                             }
@@ -324,20 +325,20 @@ namespace AkkaSb.Net
             }
         }
 
-        private Task persistAndCleanupIfRequired(IMessageSession session)
+        private async Task persistAndCleanupIfRequired(IMessageSession session)
         {
-            return Task.CompletedTask;
-            //if (this.persistenceProvider != null)
-            //{
-            //    ActorBase removed;
-            //    //if (IsMemoryCritical())
-            //    if (actorMap.TryRemove(session.SessionId, out removed))
-            //        await this.persistenceProvider.PersistActor(removed);
-            //    else
-            //        logger?.LogError($"Cannot remove actor from map. {session.SessionId}");
+            // return Task.CompletedTask;
+            if (this.persistenceProvider != null)
+            {
+                ActorBase removed;
+                //if (IsMemoryCritical())
+                if (actorMap.TryRemove(session.SessionId, out removed))
+                    await this.persistenceProvider.PersistActor(removed);
+                else
+                    logger?.LogError($"Cannot remove actor from map. {session.SessionId}");
 
-            //    logger?.LogTrace($"{this.Name} -  Actor for '{session.SessionId}' persisted.");
-            //}
+                logger?.LogTrace($"{this.Name} -  Actor for '{session.SessionId}' persisted.");
+            }
         }
 
 
