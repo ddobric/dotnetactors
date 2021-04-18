@@ -13,6 +13,7 @@ namespace UnitTestsProject
     [TestClass]
     public class ActorSbTblStoragePersistenceTests
     {
+        // NOTE: This is chetan's(FRAUAS student) storage connection string. We need to change it before commiting
         private string storageConnStr = "DefaultEndpointsProtocol=https;AccountName=dotnetactors;AccountKey=mGLCq7CHPfy6Ivp23iU3hdDqGvEmyBxVAUkU1b89YeKVWKAHry3CTM7N7orGV0XCmhXdv0z7CgfYxh0MMj30Eg==;TableEndpoint=https://dotnetactors.table.cosmos.azure.com:443/;";
 
         private List<object> list = new List<object>();
