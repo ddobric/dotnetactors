@@ -8,3 +8,10 @@ dotnet run --SystemName=HelloCluster --RequestMsgTopic=actorsystem/actortopic --
 Endpoint=sb://actorsb.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=VKHsVqYHFqjAScWUrX/zg/6JidYvgN29LmKOnqgQ1vs=
 
 "commandLineArgs": "--SystemName=HelloCluster --RequestMsgTopic=actorsystem/actortopic --RequestMsgQueue=actorsystem/actorqueue --ActorSystemName=systemzero --SubscriptionName=default --SbConnStr=Endpoint=sb://actorsb.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=VKHsVqYHFqjAScWUrX/zg/6JidYvgN29LmKOnqgQ1vs="
+
+
+
+admin@12345
+qwertyuiop@12345
+
+{"$type":"UnitTestsProject.ActorSbTblStoragePersistenceTests+CounterActor, DotNetActors.Tests","PubField":1,"Counter":84,"Id":{"$type":"AkkaSb.Net.ActorId, DotNetActors","Id":null,"IdAsString":"1"}}
