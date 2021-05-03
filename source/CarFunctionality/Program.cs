@@ -37,11 +37,14 @@ namespace CarFunctionality
             ActorSystem sysLocal = new ActorSystem($"CarFunctionalityTest", cfg);
             logger?.LogInformation("Created ActorSystem");
             
-            ActorReference actorRef1 = sysLocal.CreateActor<MyActor>(1);
-            logger?.LogInformation("Created Actor reference, actorReference1: "+actorRef1);
-            logger?.LogInformation("Asking from actorReference1");
-            var response = await actorRef1.Ask<CarAttributes>(new CarAttributes() {CarColor = "green", CarSpeed = "222km/hr", Persisted = false});
-            logger?.LogInformation("Received result: "+response.Persisted);  
+            logger?.LogInformation("Creating multiple Actor references");
+
+            for (int i = 1; i < 500; i++)
+            {
+                ActorReference actorRef1 = sysLocal.CreateActor<MyActor>(i);
+                var response = await actorRef1.Ask<CarAttributes>(new CarAttributes() {CarColor = "green", CarSpeed = "" + (222 + i), Persisted = false});
+                logger?.LogInformation("Received result: "+response.Persisted);  
+            }
         }
         
         private static async Task CheckPersistence(ILogger logger)
@@ -52,12 +55,13 @@ namespace CarFunctionality
             logger?.LogInformation("Loaded Configuration, Messaging-Queue:"+cfg.ReplyMsgQueue+", Message-Topic:"+cfg.RequestMsgTopic);
             ActorSystem sysLocal = new ActorSystem($"CarFunctionalityTest", cfg);
             logger?.LogInformation("Created ActorSystem");
-            
-            ActorReference actorRef1 = sysLocal.CreateActor<MyActor>(200);
-            logger?.LogInformation("Created Actor reference, actorReference1: "+actorRef1);
-            logger?.LogInformation("Asking from actorReference1");
-            var response = await actorRef1.Ask<CarAttributes>(new CarAttributes() {CarColor = "green", CarSpeed = "222km/hr", Persisted = true});
-            logger?.LogInformation("Received result: "+response.CarSpeed); 
+
+            for (int i = 1; i < 500; i++)
+            {
+                ActorReference actorRef1 = sysLocal.CreateActor<MyActor>(i);
+                var response = await actorRef1.Ask<long>(i);
+                logger?.LogInformation("Car Speed: "+response); 
+            }
         }
         /// <summary>
         /// Gets the Local System configuration

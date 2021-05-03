@@ -24,7 +24,7 @@ namespace ActorLibrary
                 carAttributes.Persisted = true;
                 return carAttributes;
             });
-            
+
             Receive<string>((str) =>
             {
                 return str + "Message from Actor";
@@ -40,7 +40,7 @@ namespace ActorLibrary
 
             Receive<long>((long num) =>
             {
-                return num + 1;
+                return CarSpeed;
             });
 
             Receive<DateTime>((DateTime dt) =>
