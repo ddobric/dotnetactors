@@ -37,12 +37,18 @@ namespace AkkaSb.Net
             builder.AddEnvironmentVariables();
             IConfigurationRoot configArgs = builder.Build();
             cfg.SbConnStr = configArgs["SbConnStr"];
+            
+            // TODO: This is chetan's(FRAUAS student) storage connection string. We need to change it before commiting
+            cfg.TblStoragePersistenConnStr =
+                "DefaultEndpointsProtocol=https;AccountName=dotnetactors;AccountKey=mGLCq7CHPfy6Ivp23iU3hdDqGvEmyBxVAUkU1b89YeKVWKAHry3CTM7N7orGV0XCmhXdv0z7CgfYxh0MMj30Eg==;TableEndpoint=https://dotnetactors.table.cosmos.azure.com:443/;";
+            
+            //NOTE: providing right above
+            // cfg.TblStoragePersistenConnStr = configArgs["TblStoragePersistenConnStr"];
+            
             string rcvQueue = configArgs["ReplyMsgQueue"];
             if (!String.IsNullOrEmpty(rcvQueue))
                 throw new ArgumentException("ReplyMsgQueue must not be specified when starting the server.");
-
             cfg.RequestMsgTopic = configArgs["RequestMsgTopic"];
-            cfg.TblStoragePersistenConnStr = configArgs["TblStoragePersistenConnStr"];
             cfg.ActorSystemName = configArgs["ActorSystemName"];
             cfg.RequestSubscriptionName = configArgs["SubscriptionName"];
             string systemName = configArgs["SystemName"];
@@ -52,11 +58,11 @@ namespace AkkaSb.Net
                 tokenSrc.Cancel();
             };
 
-            BlobStoragePersistenceProvider prov = null;
+            TableStoragePersistenceProvider prov = null;
 
             if (String.IsNullOrEmpty(cfg.TblStoragePersistenConnStr) == false)
             {
-                prov = new BlobStoragePersistenceProvider();
+                prov = new TableStoragePersistenceProvider();
                 prov.InitializeAsync(cfg.ActorSystemName, new Dictionary<string, object>() { { "StorageConnectionString", cfg.TblStoragePersistenConnStr } }, purgeOnStart: false, logger: this.logger).Wait();
             }
 

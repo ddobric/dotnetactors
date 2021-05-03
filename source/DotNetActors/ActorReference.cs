@@ -71,7 +71,7 @@ namespace AkkaSb.Net
         /// <returns></returns>
         public async Task<TResponse> Ask<TResponse>(object msg, TimeSpan? timeout = null, string routeToNode = null)
         {
-            // Creates a message
+            // Creates a message, NOTE: play with NODE
             var sbMsg = CreateMessage(msg, true, actorType, actorId, routeToNode);
             sbMsg.ReplyTo = this.replyQueueName;
 
