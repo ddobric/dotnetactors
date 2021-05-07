@@ -59,7 +59,7 @@ namespace CarFunctionality
             for (int i = 1; i < 500; i++)
             {
                 ActorReference actorRef1 = sysLocal.CreateActor<MyActor>(i);
-                var response = await actorRef1.Ask<long>(i);
+                var response = await actorRef1.Ask<long>(i, routeToNode:"node1");
                 logger?.LogInformation("Car Speed: "+response); 
             }
         }
