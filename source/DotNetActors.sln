@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActorLibrary", "ActorLibrar
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{8F56D115-0239-4FC8-89E0-A60A9D6C0F80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarFunctionality", "CarFunctionality\CarFunctionality.csproj", "{97FB56BD-D5F7-4B5F-BE24-63D0DE471D91}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarSampleActor", "CarSampleActor\CarSampleActor.csproj", "{97FB56BD-D5F7-4B5F-BE24-63D0DE471D91}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

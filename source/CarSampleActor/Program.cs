@@ -73,7 +73,6 @@ namespace CarFunctionality
             cfg.SbConnStr = Environment.GetEnvironmentVariable("SbConnStr");
             cfg.ReplyMsgQueue = "actorsystem/rcvlocal";
             cfg.RequestMsgTopic = "actorsystem/actortopic";
-            //cfg.TblStoragePersistenConnStr = tblAccountConnStr;
             cfg.ActorSystemName = "inst701";
             return cfg;
         }
