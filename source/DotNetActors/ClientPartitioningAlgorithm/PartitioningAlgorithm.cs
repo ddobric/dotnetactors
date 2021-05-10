@@ -24,7 +24,7 @@ namespace DotNetActors.ClientPartitioningAlgorithm
         /// <param name="nodes"></param>
         public PartitioningAlgorithm(int numElements, int numOfElementsPerPartition, int numOfPartitions, List<string> nodes)
         {
-            this.map = CreatePartitionMap(numElements, numOfElementsPerPartition, numOfPartitions, nodes);
+            this.map = CreatePartitionMap(numElements, numOfElementsPerPartition, nodes, numOfPartitions);
         }
 
 
