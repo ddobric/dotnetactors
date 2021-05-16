@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DotNetActors
+namespace DotNetActorsClientTests
 {
     /// <summary>
     /// Defines the reply message that represents an error.

@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace AkkaSb.Net
+namespace DotnetActorClientPair.Net
 {
     /// <summary>
     /// Represents the table storage persistance class

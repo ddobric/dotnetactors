@@ -1,4 +1,4 @@
-using AkkaSb.Net;
+using DotnetActorClientPair.Net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics;
 using System.Threading;
@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using ActorLibrary;
 using System;
 
-namespace DotNetActors.UnitTests
+namespace DotNetActorsClientTests.UnitTests
 {
     /// <summary>
     /// Integration tests that require running server. Befor starting these test, please run the host.

@@ -1,4 +1,4 @@
-namespace DotNetActors.UnitTests.UnitTesting.ActorPersistenceTest
+namespace DotNetActorsClientTests.UnitTests.UnitTesting.ActorPersistenceTest
 {
     public class TableStoragePersistenceProviderTests
     {

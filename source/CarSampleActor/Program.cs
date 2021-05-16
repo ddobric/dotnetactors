@@ -2,11 +2,11 @@
 using System.Threading;
 using System.Threading.Tasks;
 using ActorLibrary;
-using AkkaSb.Net;
+using DotnetActorClientPair.Net;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace CarFunctionality
+namespace CarSampleActor
 {
     class Program
     {
@@ -39,7 +39,7 @@ namespace CarFunctionality
             
             logger?.LogInformation("Creating multiple Actor references");
 
-            for (int i = 1; i < 500; i++)
+            for (int i = 1; i < 50; i++)
             {
                 ActorReference actorRef1 = sysLocal.CreateActor<MyActor>(i);
                 var response = await actorRef1.Ask<CarAttributes>(new CarAttributes() {CarColor = "green", CarSpeed = "" + (222 + i), Persisted = false});
@@ -56,7 +56,7 @@ namespace CarFunctionality
             ActorSystem sysLocal = new ActorSystem($"CarFunctionalityTest", cfg);
             logger?.LogInformation("Created ActorSystem");
 
-            for (int i = 1; i < 500; i++)
+            for (int i = 1; i < 50; i++)
             {
                 ActorReference actorRef1 = sysLocal.CreateActor<MyActor>(i);
                 var response = await actorRef1.Ask<long>(i, routeToNode:"node1");

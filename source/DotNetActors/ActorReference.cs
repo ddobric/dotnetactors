@@ -1,6 +1,6 @@
 ﻿// Copyright (c) Damir Dobric. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
-using DotNetActors;
+using DotNetActorsClientTests;
 using Microsoft.Azure.ServiceBus;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace AkkaSb.Net
+namespace DotnetActorClientPair.Net
 {
     /// <summary>
     /// Represents the Actor Reference class

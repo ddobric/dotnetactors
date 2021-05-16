@@ -12,9 +12,9 @@ using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Reflection;
 using Microsoft.Extensions.Logging;
-using DotNetActors;
+using DotNetActorsClientTests;
 
-namespace AkkaSb.Net
+namespace DotnetActorClientPair.Net
 {
     
     /// <summary>

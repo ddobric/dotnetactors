@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace AkkaSb.Net
+namespace DotnetActorClientPair.Net
 {
     /// <summary>
     /// Represents Class Blob Storage Persistence

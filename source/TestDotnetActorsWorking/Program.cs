@@ -1,11 +1,11 @@
 using ActorLibrary;
-using AkkaSb.Net;
+using DotnetActorClientPair.Net;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 
-namespace dotnetactors
+namespace dotnetactorsTest
 {
     class Program
     {

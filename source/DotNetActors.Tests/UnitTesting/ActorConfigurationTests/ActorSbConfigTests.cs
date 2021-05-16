@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using AkkaSb.Net;
+using DotnetActorClientPair.Net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace DotNetActors.UnitTests.UnitTesting.ActorConfigurationTests
+namespace DotNetActorsClientTests.UnitTests.UnitTesting.ActorConfigurationTests
 {
     /// <summary>
     /// Represents tests for the actor sb config class

@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 
-namespace AkkaSb.Net
+namespace DotnetActorClientPair.Net
 {
     /// <summary>
     /// Represents the Actor Service Bus Host Service

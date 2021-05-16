@@ -1,9 +1,9 @@
 ﻿
-using AkkaSb.Net;
+using DotnetActorClientPair.Net;
 using Microsoft.Extensions.Logging;
 using System;
 
-namespace HtmAkkaHost
+namespace DotnetActorHost
 {
 
     /// <summary>

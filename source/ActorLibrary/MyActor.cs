@@ -1,4 +1,4 @@
-﻿using AkkaSb.Net;
+﻿using DotnetActorClientPair.Net;
 using System;
 
 namespace ActorLibrary

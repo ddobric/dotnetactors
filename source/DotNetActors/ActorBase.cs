@@ -10,7 +10,7 @@ using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleToAttribute("UnitTestsProject")]
 
-namespace AkkaSb.Net
+namespace DotnetActorClientPair.Net
 {
     /// <summary>
     /// Represents the Actor ID class

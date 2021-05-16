@@ -1,4 +1,4 @@
-namespace DotNetActors.UnitTests.UnitTesting
+namespace DotNetActorsClientTests.UnitTests.UnitTesting
 {
     public class ClientPairTests
     {
