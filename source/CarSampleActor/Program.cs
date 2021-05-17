@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using ActorLibrary;
-using DotnetActorClientPair.Net;
+using DotNetActors.Net;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 

@@ -1,4 +1,4 @@
-﻿using DotnetActorClientPair.Net;
+﻿using DotNetActors.Net;
 using System;
 
 namespace ActorLibrary

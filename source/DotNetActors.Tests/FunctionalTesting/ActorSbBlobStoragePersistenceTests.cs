@@ -1,6 +1,6 @@
 // Copyright (c) Damir Dobric. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
-using DotnetActorClientPair.Net;
+using DotNetActors.Net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using NeoCortexApi.Entities;
 
 
-namespace DotnetActorTest
+namespace DotNetActorTests
 {
     [TestClass]
     public class ActorSbBlobStoragePersistenceTests

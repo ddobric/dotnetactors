@@ -1,4 +1,4 @@
-using DotnetActorClientPair.Net;
+using DotNetActors.Net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics;
 using System.Threading;
@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using ActorLibrary;
 using System;
 
-namespace DotNetActorsClientTests.UnitTests
+namespace DotNetActorTests
 {
     /// <summary>
     /// Integration tests that require running server. Befor starting these test, please run the host.

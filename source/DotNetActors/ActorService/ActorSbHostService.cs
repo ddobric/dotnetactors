@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 
-namespace DotnetActorClientPair.Net
+namespace DotNetActors.Net
 {
     /// <summary>
     /// Represents the Actor Service Bus Host Service

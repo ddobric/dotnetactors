@@ -1,4 +1,4 @@
-namespace DotNetActorsClientTests.UnitTests.UnitTesting.ActorServiceTest
+namespace DotNetActorTests.UnitTests.UnitTesting.ActorServiceTest
 {
     public class ActorSbHostServiceTests
     {

@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using DotnetActorClientPair.Net;
+using DotNetActors.Net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace DotNetActorsClientTests.UnitTests.UnitTesting.ActorConfigurationTests
+namespace DotNetActorTests.UnitTests.UnitTesting.ActorConfigurationTests
 {
     /// <summary>
     /// Represents tests for the actor sb config class

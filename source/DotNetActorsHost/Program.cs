@@ -1,5 +1,5 @@
 ﻿
-using DotnetActorClientPair.Net;
+using DotNetActors.Net;
 using Microsoft.Extensions.Logging;
 using System;
 

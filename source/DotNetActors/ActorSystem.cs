@@ -12,9 +12,9 @@ using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Reflection;
 using Microsoft.Extensions.Logging;
-using DotNetActorsClientTests;
+using DotNetActorTests;
 
-namespace DotnetActorClientPair.Net
+namespace DotNetActors.Net
 {
     
     /// <summary>

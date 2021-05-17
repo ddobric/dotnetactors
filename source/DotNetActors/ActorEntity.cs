@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DotnetActorClientPair.Net
+namespace DotNetActors.Net
 {
     using Microsoft.Azure.Cosmos.Table;
     public class ActorEntity : TableEntity

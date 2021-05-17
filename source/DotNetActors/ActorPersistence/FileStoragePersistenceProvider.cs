@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace DotnetActorClientPair.Net
+namespace DotNetActors.Net
 {
     
     /// <summary>

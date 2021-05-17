@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace DotnetActorClientPair.Net
+namespace DotNetActors.Net
 {
     /// <summary>
     /// Represents the table storage persistance class

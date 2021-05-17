@@ -10,7 +10,7 @@ using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleToAttribute("UnitTestsProject")]
 
-namespace DotnetActorClientPair.Net
+namespace DotNetActors.Net
 {
     /// <summary>
     /// Represents the Actor ID class

@@ -1,11 +1,11 @@
 using ActorLibrary;
-using DotnetActorClientPair.Net;
+using DotNetActors.Net;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 
-namespace dotnetactorsTest
+namespace DotNetActorsSample
 {
     class Program
     {

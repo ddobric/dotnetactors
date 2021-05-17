@@ -1,4 +1,4 @@
-namespace DotNetActorsClientTests.UnitTests.UnitTesting.ActorExceptionTests
+namespace DotNetActorTests.UnitTests.UnitTesting.ActorExceptionTests
 {
     public class ActorExceptionTests
     {

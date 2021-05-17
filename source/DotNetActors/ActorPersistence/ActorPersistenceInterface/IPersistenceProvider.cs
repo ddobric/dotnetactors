@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DotnetActorClientPair.Net
+namespace DotNetActors.Net
 {
     /// <summary>
     /// Represents Interface for persistence. Below methods will be implemented as per the need

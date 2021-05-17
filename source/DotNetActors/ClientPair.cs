@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DotnetActorClientPair.Net
+namespace DotNetActors.Net
 {
     //public class ClientPair
     //{
