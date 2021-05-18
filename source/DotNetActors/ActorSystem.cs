@@ -12,14 +12,10 @@ using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Reflection;
 using Microsoft.Extensions.Logging;
-using DotNetActorTests;
+using DotNetActors;
 
 namespace DotNetActors.Net
 {
-    
-    /// <summary>
-    /// Represents the actor system class
-    /// </summary>
     public class ActorSystem
     {
         private string sbConnStr;
@@ -31,7 +27,9 @@ namespace DotNetActors.Net
 
         private QueueClient ReplyMsgReceiverQueueClient;
 
-        private SessionClient sessionRcvClient;
+        //private SessionClient sessionRcvClient;
+
+        private ActorSbConfig config;
 
         private TopicClient sendRequestClient;
 
@@ -63,13 +61,6 @@ namespace DotNetActors.Net
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="config"></param>
-        /// <param name="logger"></param>
-        /// <param name="persistenceProvider"></param>
         public ActorSystem(string name, ActorSbConfig config, ILogger logger = null, IPersistenceProvider persistenceProvider = null)
         {
             this.logger = logger;
@@ -77,15 +68,15 @@ namespace DotNetActors.Net
             this.Name = name;
             this.sbConnStr = config.SbConnStr;
             this.subscriptionName = config.RequestSubscriptionName;
-            
-            // Microsoft azure service bus SessionClient
-            this.sessionRcvClient = new SessionClient(config.SbConnStr, $"{config.RequestMsgTopic}/Subscriptions/{config.RequestSubscriptionName}",
-            retryPolicy: createRetryPolicy(),
-            receiveMode: ReceiveMode.PeekLock);
+            this.config = config;
+            //this.sessionRcvClient = new SessionClient(config.SbConnStr, $"{config.RequestMsgTopic}/Subscriptions/{config.RequestSubscriptionName}",
+            //retryPolicy: createRetryPolicy(),
+            //receiveMode: ReceiveMode.PeekLock);
 
             this.sendRequestClient = new TopicClient(config.SbConnStr, config.RequestMsgTopic,
             retryPolicy: createRetryPolicy());
-            
+
+            //
             // Receiving of reply messages is optional. If the actor system does not send messages
             // then it will also not listen for reply messages.
             if (config.ReplyMsgQueue != null)
@@ -139,7 +130,7 @@ namespace DotNetActors.Net
 
                     if (val >= 10)
                     {
-                        logger?.LogWarning($"Accepted maximal number of sessions: {runningTasks}.");
+                        logger?.LogWarning($"Accepted maximal nuber of sessions: {runningTasks}.");
 
                         await Task.Delay(1000);
 
@@ -149,7 +140,11 @@ namespace DotNetActors.Net
                     {
                         try
                         {
-                            var session = await this.sessionRcvClient.AcceptMessageSessionAsync();
+                            var sessionRcvClient = new SessionClient(config.SbConnStr, $"{config.RequestMsgTopic}/Subscriptions/{config.RequestSubscriptionName}",
+                           retryPolicy: createRetryPolicy(),
+                           receiveMode: ReceiveMode.PeekLock);
+
+                            var session = await sessionRcvClient.AcceptMessageSessionAsync();
                             logger?.LogInformation($"{this.Name} - Accepted new session: {session.SessionId}");
                             Interlocked.Increment(ref runningTasks);
 
@@ -228,7 +223,6 @@ namespace DotNetActors.Net
 
                             if (actor == null)
                             {
-                                // Which type pf actor we want to create
                                 actor = Activator.CreateInstance(tp, id) as ActorBase;
                                 logger?.LogInformation($"{this.Name} - New instance created: {tp.Name}/{id}, actorMap: {actorMap.Keys.Count}");
                             }
@@ -325,20 +319,20 @@ namespace DotNetActors.Net
             }
         }
 
-        private async Task persistAndCleanupIfRequired(IMessageSession session)
+        private Task persistAndCleanupIfRequired(IMessageSession session)
         {
-            // return Task.CompletedTask;
-            if (this.persistenceProvider != null)
-            {
-                ActorBase removed;
-                //if (IsMemoryCritical())
-                if (actorMap.TryRemove(session.SessionId, out removed))
-                    await this.persistenceProvider.PersistActor(removed);
-                else
-                    logger?.LogError($"Cannot remove actor from map. {session.SessionId}");
+            return Task.CompletedTask;
+            //if (this.persistenceProvider != null)
+            //{
+            //    ActorBase removed;
+            //    //if (IsMemoryCritical())
+            //    if (actorMap.TryRemove(session.SessionId, out removed))
+            //        await this.persistenceProvider.PersistActor(removed);
+            //    else
+            //        logger?.LogError($"Cannot remove actor from map. {session.SessionId}");
 
-                logger?.LogTrace($"{this.Name} -  Actor for '{session.SessionId}' persisted.");
-            }
+            //    logger?.LogTrace($"{this.Name} -  Actor for '{session.SessionId}' persisted.");
+            //}
         }
 
 
