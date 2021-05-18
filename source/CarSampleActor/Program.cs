@@ -18,6 +18,8 @@ namespace CarSampleActor
             IConfigurationRoot configArgs = builder.Build();
             ILogger logger = generateLogger();
 
+            await LoadCarAttributes(logger);
+
             if (configArgs["shallRun"] == "true")
             {
                 await LoadCarAttributes(logger);
@@ -39,10 +41,10 @@ namespace CarSampleActor
             
             logger?.LogInformation("Creating multiple Actor references");
 
-            for (int i = 1; i < 50; i++)
+            for (int i = 1; i < 5000; i++)
             {
                 ActorReference actorRef1 = sysLocal.CreateActor<MyActor>(i);
-                var response = await actorRef1.Ask<CarAttributes>(new CarAttributes() {CarColor = "green", CarSpeed = "" + (222 + i), Persisted = false});
+                var response =  await actorRef1.Ask<CarAttributes>(new CarAttributes() {CarColor = "green", CarSpeed = "" + (222 + i), Persisted = false});
                 logger?.LogInformation("Received result: "+response.Persisted);  
             }
         }

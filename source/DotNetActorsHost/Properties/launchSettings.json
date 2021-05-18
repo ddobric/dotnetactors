@@ -2,7 +2,7 @@
   "profiles": {
     "HtmAkkaHost": {
       "commandName": "Project",
-      "commandLineArgs": "--SystemName=actorsystem --RequestMsgTopic=actorsystem/actortopic --RequestMsgQueue=actorsystem/actorqueue --ActorSystemName=carsample --SubscriptionName=node1"
+      "commandLineArgs": "--SystemName=actorsystem --RequestMsgTopic=actorsystem/actortopic --RequestMsgQueue=actorsystem/actorqueue --ActorSystemName=carsample --SubscriptionName=default"
     }
   }
 }
