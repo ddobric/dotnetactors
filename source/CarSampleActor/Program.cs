@@ -56,7 +56,7 @@ namespace CarSampleActor
             ActorSystem sysLocal = new ActorSystem($"CarFunctionalityTest", cfg);
             logger?.LogInformation("Created ActorSystem");
 
-            for (int i = 1; i < 5000; i++)
+            for (int i = 1; i < 100; i++)
             {
                 ActorReference actorRef1 = sysLocal.CreateActor<MyActor>(i);
                 var response = await actorRef1.Ask<long>(i);
