@@ -319,20 +319,19 @@ namespace DotNetActors.Net
             }
         }
 
-        private Task persistAndCleanupIfRequired(IMessageSession session)
+        private async Task persistAndCleanupIfRequired(IMessageSession session)
         {
-            return Task.CompletedTask;
-            //if (this.persistenceProvider != null)
-            //{
-            //    ActorBase removed;
-            //    //if (IsMemoryCritical())
-            //    if (actorMap.TryRemove(session.SessionId, out removed))
-            //        await this.persistenceProvider.PersistActor(removed);
-            //    else
-            //        logger?.LogError($"Cannot remove actor from map. {session.SessionId}");
+            if (this.persistenceProvider != null)
+            {
+                ActorBase removed;
+                //if (IsMemoryCritical())
+                if (actorMap.TryRemove(session.SessionId, out removed))
+                    await this.persistenceProvider.PersistActor(removed);
+                else
+                    logger?.LogError($"Cannot remove actor from map. {session.SessionId}");
 
-            //    logger?.LogTrace($"{this.Name} -  Actor for '{session.SessionId}' persisted.");
-            //}
+                logger?.LogTrace($"{this.Name} -  Actor for '{session.SessionId}' persisted.");
+            }
         }
 
 
