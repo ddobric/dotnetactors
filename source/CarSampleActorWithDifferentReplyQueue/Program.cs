@@ -6,26 +6,18 @@ using DotNetActors.Net;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace CarSampleActor
+namespace CarSampleActorWithDifferentReplyQueue
 {
     class Program
     {
-        static async Task Main(string[] args)
+         static async Task Main(string[] args)
         {
             var builder = new ConfigurationBuilder();
             builder.AddCommandLine(args);
             builder.AddEnvironmentVariables();
             IConfigurationRoot configArgs = builder.Build();
             ILogger logger = generateLogger();
-
-            if (configArgs["shallRun"] == "true")
-            {
-                await LoadCarAttributes(logger);
-            }
-            else
-            {
-                await CheckPersistence(logger);
-            }
+            await LoadCarAttributes(logger);
         }
         
         private static async Task LoadCarAttributes(ILogger logger)
@@ -39,7 +31,7 @@ namespace CarSampleActor
             
             logger?.LogInformation("Creating multiple Actor references");
 
-            for (int i = 1; i < 100; i++)
+            for (int i = 200; i < 300; i++)
             {
                 ActorReference actorRef1 = sysLocal.CreateActor<MyActor>(i);
                 var response =  await actorRef1.Ask<CarAttributes>(new CarAttributes() {CarColor = "green", CarSpeed = "" + (222 + i), Persisted = false});
@@ -47,22 +39,6 @@ namespace CarSampleActor
             }
         }
         
-        private static async Task CheckPersistence(ILogger logger)
-        {
-            logger?.LogInformation("Fetching Car attributes started....");
-            CancellationTokenSource src = new CancellationTokenSource();
-            var cfg = GetLocaSysConfig();
-            logger?.LogInformation("Loaded Configuration, Messaging-Queue:"+cfg.ReplyMsgQueue+", Message-Topic:"+cfg.RequestMsgTopic);
-            ActorSystem sysLocal = new ActorSystem($"CarFunctionalityTest", cfg);
-            logger?.LogInformation("Created ActorSystem");
-
-            for (int i = 1; i < 100; i++)
-            {
-                ActorReference actorRef1 = sysLocal.CreateActor<MyActor>(i);
-                var response = await actorRef1.Ask<long>(i);
-                logger?.LogInformation("Car Speed: "+response); 
-            }
-        }
         /// <summary>
         /// Gets the Local System configuration
         /// </summary>
@@ -71,9 +47,9 @@ namespace CarSampleActor
         {
             ActorSbConfig cfg = new ActorSbConfig();
             cfg.SbConnStr = Environment.GetEnvironmentVariable("SbConnStr");
-            cfg.ReplyMsgQueue = "actorsystem/rcvlocal";
+            cfg.ReplyMsgQueue = "actorsystem2/rcvlocal";
             cfg.RequestMsgTopic = "actorsystem/actortopic";
-            cfg.ActorSystemName = "actorsystem";
+            cfg.ActorSystemName = "actorsystem2";
             return cfg;
         }
 
