@@ -15,5 +15,6 @@ To run the dotnetactor service some basic configurations are required to setup t
 --SubscriptionName=default
 
 3. Thats it hit enter, the service is up and running
+4. To run the service on multiple nodes, execute the same command on multiple terminals
 
 
