@@ -1,4 +1,4 @@
-# Service Configurations
+# System Configurations
 
 To run the dotnetactor service some basic configurations are required to setup that are:
 
