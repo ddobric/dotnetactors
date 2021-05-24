@@ -7,7 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\ActorLibrary\ActorLibrary.csproj" />
+      <ProjectReference Include="..\ActorSampleLibrary\ActorSampleLibrary.csproj" />
       <ProjectReference Include="..\DotNetActors\DotNetActors.csproj" />
     </ItemGroup>
 
