@@ -22,7 +22,7 @@ Step 3. Using the ActorSystem object, create an actor as shown in Fig below. The
 
 # Service 
 
-Please follow the https://github.com/ddobric/dotnetactors/blob/branch-1/SystemConfigurations.md to run the dotnetactor service.
+Please click [HERE](https://github.com/ddobric/dotnetactors/blob/branch-1/SystemConfigurations.md)  to run the dotnetactor service.
 
 
 
