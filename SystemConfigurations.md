@@ -2,7 +2,7 @@
 
 To run the dotnetactor service some basic configurations are required to setup that are:
 
-1. Before starting the service a service bus connection string needs to be setup as an environment variable as shown in the fig below.
+1. Before starting the service a service bus connection string needs to be setup as an environment variable as shown in the fig below. The process to setup the environment vaeriables is different in different operating systems. Follow this link and setup the Environment variable as shown in below figure according to your OS [Link](https://www.twilio.com/blog/2017/01/how-to-set-environment-variables.html)
 
 ![image](https://user-images.githubusercontent.com/28738233/119394639-b3c33180-bcd2-11eb-84f6-bc81698b0b7a.png)
 
