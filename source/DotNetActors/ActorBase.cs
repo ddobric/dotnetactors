@@ -132,8 +132,8 @@ namespace DotNetActors.Net
         /// <summary>
         /// You must invoke this method to register the receiver handler.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="handler"></param>
+        /// <typeparam name="T">The type of the input argument.</typeparam>
+        /// <param name="handler">The function to be invoked. The return parameter of the function is of type object.</param>
         public void Receive<T>(Func<T, object> handler)
         {
             dict[typeof(T)] = (Delegate)handler;
