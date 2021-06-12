@@ -70,8 +70,6 @@ private static async Task Run()
             
 ~~~
 
-
-
 # Service 
 
 Please click [HERE](https://github.com/ddobric/dotnetactors/blob/branch-1/SystemConfigurations.md)  to run the dotnetactor service.
