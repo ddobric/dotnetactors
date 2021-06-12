@@ -6,18 +6,70 @@ Here step by step guidance is provided on how to run/imlement the client and dot
 
 In this section steps to implement and run the client are provided. An illustration of each step is also provided to ease the implementation.
 
-Step 1. The first step is to implement a method and create an ActorSystem object. Then pass the configurations as shown in Fig below. The configuration should have the same topic, as used to start the service. 
+## Step 2 : Implement your actor
+Implement a class that extends the ActorBase class and implement the *Receive()* method as per the requirement as shown in the code snippet below.
 
-![image](https://user-images.githubusercontent.com/28738233/119395433-c8ec9000-bcd3-11eb-913b-c2d8f268f52a.png)
+~~~csharp
+ /// <summary>
+    /// Represents MyActor class
+    /// </summary>
+    public class MyActor : ActorBase
+    {
+        public DeviceState deviceStateState { get; set; }
+        public String CarSpeed { get; set; }
+        public String CarColor { get; set; }
+        public Boolean Persisted { get; set; }
 
+        public MyActor(ActorId id) : base(id)
+        {
+            Receive<CarAttributes>((CarAttributes carAttributes) =>
+            {
+                this.CarColor = carAttributes.CarColor;
+                this.CarSpeed = carAttributes.CarSpeed;
+                this.Persisted = true;
+                this.Perist().Wait();
+                carAttributes.Persisted = true;
+                return carAttributes;
+            });
+         
+            Receive<DeviceState>(((deviceState) =>
+            {
+                deviceStateState = new DeviceState();
+                deviceStateState.Color = "Blue";
+                deviceStateState.State = false;
+                return deviceStateState;
+            }));          
+        }
+    }
+~~~
 
-Step 2. Implement a class that extends the ActorBase class and implement the Receive() method as per the requirement as shown
+The actor *MyActor* is a class that defines two methods by the message contract. We have aligned this service style to the *Akka* framework. The first operation will be invoked when the message of type *CarAttributes* is sent to the actor system. Analog, the second operation is invoked when the message of type *DeviceState* is sent to the service. In both cases, the operation can return some result or not. This is not defined by the contract. If you want to return a result return anything. This works because the contract expects an object.
 
-![image](https://user-images.githubusercontent.com/28738233/119395475-da359c80-bcd3-11eb-9df3-034d6547896e.png)
+## Step 2.
+Implement a method that creates an ActorSystem object and invokes the operation that is executed remotely inside of the actor. The configuration should have the same topic, as used to start the service described later in this document. 
 
-Step 3. Using the ActorSystem object, create an actor as shown in Fig below. Then call Ask() method to get the result from the service. That’s it, run this method from the Main() method.
+~~~csharp
 
-![image](https://user-images.githubusercontent.com/28738233/119395509-e588c800-bcd3-11eb-80b4-f2534f01918d.png)
+private static async Task Run()
+{
+  ActorSbConfig cfg = new ActorSbConfig();
+  cfg.SbConnStr = Environment.GetEnvironmentVariable("SbConnStr");
+  cfg.ReplyMsgQueue = "actorsystem2/rcvlocal";
+  cfg.RequestMsgTopic = "actorsystem/actortopic";
+  cfg.ActorSystemName = "actorsystem2";
+  
+  ActorSystem sysLocal = new ActorSystem($"CarFunctionalityTest", cfg);
+       
+  for (int i = 0; i < 1000; i++)
+  {
+      ActorReference actorRef1 = sysLocal.CreateActor<MyActor>(i);
+      var response =  await actorRef1.Ask<CarAttributes>(new CarAttributes() {CarColor = "green", CarSpeed = "" + (222 + i), Persisted = false});
+                
+  }
+}
+            
+~~~
+
 
 
 # Service 
