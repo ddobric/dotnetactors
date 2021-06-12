@@ -11,11 +11,13 @@ To run the dotnetactor service some basic configurations are required to setup t
 
 Open the terminal in the DotNetActorsHost project folder and enter the below command as shown below
 
+~~~
 dotnet run --SystemName=HelloCluster
 -- RequestMsgTopic=actorsystem/actortopic
 -- RequestMsgQueue=actorsystem/actorqueue
 --ActorSystemName=actorsystem
 --SubscriptionName=default
+~~~
 
 ![image](https://user-images.githubusercontent.com/28738233/121670567-df556280-caad-11eb-9cb0-c4eba872842a.png)
 
