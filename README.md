@@ -10,7 +10,7 @@ The limitations of the current processor technology have been a growing movement
 
 Actor Programming Model (APM) is a conceptual concurrent computation model which came into the picture in 1973 [2]. It has established some of the rules on how the system components should behave and interact with each other. An actor can be represented as a fundamental unit of computation that can perform certain actions such as create another actor, send a message to another actor, and designate how to handle the next message. Actors are lightweight and millions of them can be created very easily. It has its private state and a mailbox, like a messaging queue where a message from another actor can be stored. A message which an actor gets from another actor is processed in FIFO (first in and first out) order. Actors can be considered as the form of object-oriented programming, which communicates by exchanging messages. It has a direct lifecycle, which means they are not automatically destroyed when no longer referenced, once created it is the user’s responsibility to eventually terminate them. This enables the user to free up the resources depending upon the need. Actors generally communicate with each other through messages, if they have the address of other actors. The address can be local or remote. The most widely used implementations for the Actor Programming Model (APM) are Akka and Erlang [2].
 
-For more information please refer to the paper. 
+For more information please refer to the paper in docs folder of this repository.
 
 
 
