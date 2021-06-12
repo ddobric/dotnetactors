@@ -11,13 +11,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetActorsHost", "DotNetA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetActors.Tests", "DotNetActors.Tests\DotNetActors.Tests.csproj", "{87DB6648-7BF3-4C2B-9F1C-8054763CD618}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActorSampleLibrary", "ActorSampleLibrary\ActorSampleLibrary.csproj", "{1C5D10E6-23A0-4CAA-9408-4B899F693EFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ActorSampleLibrary", "ActorSampleLibrary\ActorSampleLibrary.csproj", "{1C5D10E6-23A0-4CAA-9408-4B899F693EFB}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{8F56D115-0239-4FC8-89E0-A60A9D6C0F80}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{8F56D115-0239-4FC8-89E0-A60A9D6C0F80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarSampleActor", "CarSampleActor\CarSampleActor.csproj", "{97FB56BD-D5F7-4B5F-BE24-63D0DE471D91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarSampleActor", "CarSampleActor\CarSampleActor.csproj", "{97FB56BD-D5F7-4B5F-BE24-63D0DE471D91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarSampleActorWithDifferentReplyQueue", "CarSampleActorWithDifferentReplyQueue\CarSampleActorWithDifferentReplyQueue.csproj", "{034F1EF5-16E2-4605-8978-30DE963B30B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarSampleActorWithDifferentReplyQueue", "CarSampleActorWithDifferentReplyQueue\CarSampleActorWithDifferentReplyQueue.csproj", "{034F1EF5-16E2-4605-8978-30DE963B30B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
