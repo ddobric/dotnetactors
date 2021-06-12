@@ -1,3 +1,5 @@
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/ddobric/htmdotnet/blob/master/LICENSE) ![.NET](https://github.com/ddobric/dotnetactors/workflows/.NET/badge.svg)
+
 # DotnetActors
 
 Actor Programming Model (APM) is an asynchronous message-passing model which is used for fine-grained concurrency and distributed-memory applications. The parallelism that is required for building concurrent applications can be easily provided by the Actor Programming Model (APM). The API described in this paper relies on the findings defined in the previous work that demonstrates how the computation of the model of the cortical column can be easily distributed by using the Actor Programming Model (APM) approach. The APM implementation provides a higher level of abstraction that makes it easier to write concurrent, parallel, and distributed systems. This paper helps developers to easily leverage the Actor Programming Model (APM) paradigm and take full control of the distribution of the compute logic through actors. 
