@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "HtmAkkaHost": {
-      "commandName": "Project",
-      "commandLineArgs": "--SystemName=HelloCluster --RequestMsgTopic=actorsystem/actortopic --RequestMsgQueue=actorsystem/actorqueue --ActorSystemName=systemzero --SubscriptionName=default"
-    }
-  }
-}
