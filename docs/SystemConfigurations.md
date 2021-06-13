@@ -3,7 +3,7 @@
 Here are the basic configurations required to start the service.
 
 ## Step.1 : Configure the service bus connection string as an environment variable
-The service bus connection string should be configured as an environment variable. The process to configure it is different in different operating systems. Please follow this [link](https://www.twilio.com/blog/2017/01/how-to-set-environment-variables.html) and setup the environment variable according to your OS.
+The service bus connection string should be configured as an environment variable. The process to configure it is different in different operating systems. Please follow this [LINK](https://www.twilio.com/blog/2017/01/how-to-set-environment-variables.html) and setup the environment variable according to your OS.
 
 After successfully configuring the connection string, it should appear in the environment variable as shown below:
 ![image](https://user-images.githubusercontent.com/28738233/119394639-b3c33180-bcd2-11eb-84f6-bc81698b0b7a.png)
