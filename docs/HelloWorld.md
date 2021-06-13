@@ -108,7 +108,7 @@ There is nothing more you have to do.
 However, to run this code, you will have to provide few command line arguments. The *ActorSbServiceHost* will grab arguments from the command line arguments and from environment variables. Environment variables (if exist the same one) will override command line arguments.
 
 
-For more information about configuration please refer [HERE](https://github.com/ddobric/dotnetactors/blob/branch-1/SystemConfigurations.md)  to run the dotnetactor service.
+For more information about configuration please refer [HERE](https://github.com/ddobric/dotnetactors/blob/main/docs/SystemConfigurations.md)  to run the dotnetactor service.
 
 
 
