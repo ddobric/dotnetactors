@@ -7,7 +7,7 @@ namespace DotnetActorHost
 {
 
     /// <summary>
-    /// Represents Main class that initialize the ActorSBHostService
+    /// Implements the ActorSBHostService that hosts the actor.
     /// </summary>
     class Program
     {

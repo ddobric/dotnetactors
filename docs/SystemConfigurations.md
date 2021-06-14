@@ -1,15 +1,18 @@
 # System Configurations
 
-To run the dotnetactor service some basic configurations are required to setup that are:
+Here are the basic configurations required to start the service.
 
-1. Before starting the service a service bus connection string needs to be setup as an environment variable as shown in the fig below. The process to setup the environment vaeriables is different in different operating systems. Follow this link and setup the Environment variable as shown in below figure according to your OS [Link](https://www.twilio.com/blog/2017/01/how-to-set-environment-variables.html)
+## Step.1 : Configure the service bus connection string as an environment variable
+The service bus connection string should be configured as an environment variable. The process to configure it is different in different operating systems. Please follow this [LINK](https://www.twilio.com/blog/2017/01/how-to-set-environment-variables.html) and setup the environment variable according to your OS.
 
+After successfully configuring the connection string, it should appear in the environment variable as shown below:
 ![image](https://user-images.githubusercontent.com/28738233/119394639-b3c33180-bcd2-11eb-84f6-bc81698b0b7a.png)
 
 
-# How to run the service
+## Step.2 : Start the service
 
-Open the terminal in the DotNetActorsHost project folder and enter the below command as shown below
+1. To start the service, go inside DotNetActorsHost project folder and open the terminal or cmd there.
+2. Now execute the below command in the termina or cmd.
 
 ~~~
 dotnet run --SystemName=HelloCluster
@@ -19,15 +22,14 @@ dotnet run --SystemName=HelloCluster
 --SubscriptionName=default
 ~~~
 
-![image](https://user-images.githubusercontent.com/28738233/121670567-df556280-caad-11eb-9cb0-c4eba872842a.png)
+Here, 
+- SystemName represents the system name that is used to initializes the ActorSystem. 
+- RequestMsgTopic is defined as the topic name form where the service subscribes message. 
+- RequestMsgQueue is described as  queue name to which response messages are pushed by the service .
+- ActorSystemName is  interpretted as a name that is used to initialize the persistence provider.
+For more information please refer [HERE](https://github.com/ddobric/dotnetactors/blob/main/docs/dotnetactors%20paper.pdf) for dotnet actor documentation
 
-Here 
-SystemName creates the ActorSystem with this name.
-RequestMsgTopic is the topic name form where the service subscribes its messages
-RequestMsgQueue is the name of the queue on which response messages are pushed.
-ActorSystemName is used to initialize the persistence provider
-
-3. Thats it hit enter, the service is up and running
-5. To run the service on multiple nodes, execute the same command on multiple terminals
+3. Once executed, the service will be up and running.
+5. To run the service on multiple nodes, execute the same command over multiple terminals
 
 
