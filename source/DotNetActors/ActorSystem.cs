@@ -165,7 +165,7 @@ namespace DotNetActors.Net
                         catch (ServiceBusTimeoutException ex)
                         {
                             logger?.LogWarning($"ServiceBusTimeoutException");
-                            throw ex;
+                            // throw ex;
                         }
                         catch (Exception ex)
                         {
